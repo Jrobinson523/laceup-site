@@ -1,0 +1,73 @@
+{
+  "programs": [
+    {
+      "name": "1:1 Private Training",
+      "tag": "Individual",
+      "blurb": "One-on-one sessions built around your game, your weaknesses, your pace.",
+      "dates": "Fall/winter cycle — dates announced soon"
+    },
+    {
+      "name": "Small Group Training",
+      "tag": "2-4 players",
+      "blurb": "Same individual attention, shared reps, built-in competition.",
+      "dates": "Fall/winter cycle — dates announced soon"
+    },
+    {
+      "name": "Team & Squad Sessions",
+      "tag": "Team",
+      "blurb": "Bring your team or AAU squad in for skill work and conditioning.",
+      "dates": "Fall/winter cycle — dates announced soon"
+    },
+    {
+      "name": "Clinics",
+      "tag": "Clinic",
+      "blurb": "Multi-week clinics for players building fundamentals at every level.",
+      "dates": "Fall/winter cycle — dates announced soon"
+    }
+  ],
+  "faq": [
+    {
+      "q": "What skill levels do you train?",
+      "a": "Every level — from players just picking up the game to competitive travel and high school athletes. Sessions are built around where you are, not a fixed curriculum."
+    },
+    {
+      "q": "What are your coaching credentials?",
+      "a": "Lead coach is a 3x collegiate national champion with 35+ years in the game, coaching and playing at every level."
+    },
+    {
+      "q": "How do I book a session?",
+      "a": "Book a free discovery call below, or call/text us directly. We'll talk through goals and get you on the schedule."
+    },
+    {
+      "q": "What does a first session look like?",
+      "a": "Details coming soon — check back or ask on your discovery call."
+    },
+    {
+      "q": "What does training cost?",
+      "a": "Pricing information coming soon — ask on your discovery call."
+    }
+  ],
+  "contact": {
+    "phone_display": "(914) 907-7199",
+    "phone_tel": "+19149077199",
+    "email": "Trulaceup@gmail.com",
+    "instagram_handle": "@laceupsportsny",
+    "instagram_url": "https://www.instagram.com/laceupsportsny",
+    "calendly_url": "https://calendly.com/trulaceup/discovery"
+  },
+  "coaches": [
+    {
+      "name": "Coach Robinson Jr.",
+      "credential": "3x collegiate national champion, 35+ years in the game"
+    },
+    {
+      "name": "Vaughn Dweck",
+      "credential": "Co-coach"
+    }
+  ],
+  "seo": {
+    "title": "Lace Up Sports — Westchester Basketball Training",
+    "description": "Westchester basketball training led by a 3x collegiate national champion coach. Individual sessions, small groups, camps, and clinics for every level.",
+    "canonical": "https://www.trulaceup.com/"
+  }
+}

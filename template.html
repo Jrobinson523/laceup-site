@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<link rel="canonical" href="{{CANONICAL}}">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:image" content="{{CANONICAL}}assets/hero.jpg">
+<meta property="og:url" content="{{CANONICAL}}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="wordmark">LACE UP</div>
+
+  <section class="hero">
+    <picture>
+      <img class="hero-poster" id="heroPoster" src="assets/hero.jpg" alt="Lace Up coach running a drill with a player on the court" loading="eager" fetchpriority="high">
+    </picture>
+    <video class="hero-media" id="heroVideo" autoplay muted loop playsinline poster="assets/hero.jpg" aria-hidden="true" hidden>
+      <source src="assets/hero-loop.webm" type="video/webm">
+      <source src="assets/hero-loop.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-scrim"></div>
+    <div class="hero-inner">
+      <h1>Fall training<br>starts <em>now.</em></h1>
+      <p class="hero-sub">Westchester's premier basketball training program. Individual sessions, small group training, team workouts, and clinics — built to elevate your game at every level.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#book">Book a free discovery call</a>
+        <a class="btn btn-ghost" href="sms:{{PHONE_TEL}}&body=Hi%20Lace%20Up%2C%20I%27d%20like%20to%20ask%20about%20fall%20training">Text us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="wrap proof-grid">
+      <div class="proof-item rise">
+        <div class="proof-num">3x</div>
+        <div class="proof-label">National champion head coach</div>
+      </div>
+      <div class="proof-item rise">
+        <div class="proof-num">35+</div>
+        <div class="proof-label">Years combined coaching experience</div>
+      </div>
+      <div class="proof-item rise">
+        <div class="proof-num">1:1</div>
+        <div class="proof-label">Plans built around the individual athlete</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="programs">
+    <div class="wrap">
+      <div class="section-head rise">
+        <h2>Programs for fall &amp; winter.</h2>
+        <span class="season-tag">Fall / Winter 2026</span>
+      </div>
+      <div class="cards">
+{{PROGRAM_CARDS}}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" id="coaches">
+    <div class="wrap">
+      <div class="section-head rise">
+        <h2>Coached by champions.</h2>
+      </div>
+{{COACH_BLOCKS}}
+    </div>
+  </section>
+
+  <section class="section" id="book">
+    <div class="wrap">
+      <div class="section-head rise">
+        <h2>Book a free discovery call.</h2>
+      </div>
+      <div class="book-embed">
+        <div class="calendly-inline-widget" data-url="{{CALENDLY_URL}}" style="min-width:280px;height:700px;"></div>
+      </div>
+      <p class="book-fallback">Widget not loading? Book directly at <a href="{{CALENDLY_URL}}">{{CALENDLY_URL}}</a>, call/text <a href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a>, or email <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>.</p>
+    </div>
+  </section>
+
+  <section class="section-tight" id="faq">
+    <div class="wrap">
+      <div class="section-head rise">
+        <h2>Questions, answered.</h2>
+      </div>
+{{FAQ_ITEMS}}
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-wordmark">LACE UP</div>
+      <div>Westchester, NY</div>
+      <div class="foot-row">
+        <a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">{{INSTAGRAM_HANDLE}}</a>
+        <a href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a> · <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="sticky-bar" aria-label="Quick actions">
+    <a href="tel:{{PHONE_TEL}}"><span class="sticky-icon">&#9742;</span>Call</a>
+    <a href="sms:{{PHONE_TEL}}"><span class="sticky-icon">&#9993;</span>Text</a>
+    <a href="#book"><span class="sticky-icon">&#9679;</span>Book</a>
+  </nav>
+
+  <!-- Calendly official inline embed script — the one allowed external script -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <script>
+    (function(){
+      var video = document.getElementById('heroVideo');
+      var poster = document.getElementById('heroPoster');
+      if (!video) return;
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) return; // keep poster only
+      video.hidden = false;
+      poster.hidden = true;
+      video.play && video.play().catch(function(){ video.hidden = true; poster.hidden = false; });
+    })();
+  </script>
+</body>
+</html>
