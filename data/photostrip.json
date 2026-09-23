@@ -1,13 +1,13 @@
 {
   "stills": [
-    { "image": "assets/strip/still-01.jpg", "alt": "Player cutting hard off a screen during a drill" },
-    { "image": "assets/strip/still-02.jpg", "alt": "Coach walking a player through a defensive stance" },
-    { "image": "assets/strip/still-03.jpg", "alt": "Ladder work on the baseline" },
-    { "image": "assets/strip/still-04.jpg", "alt": "Ladder drill in progress, players lined up behind" },
-    { "image": "assets/strip/still-05.jpg", "alt": "Two players working a passing drill" },
-    { "image": "assets/strip/still-06.jpg", "alt": "Group warmup at the top of the key" },
-    { "image": "assets/strip/still-07.jpg", "alt": "Players spaced out for a shooting drill" },
-    { "image": "assets/strip/still-08.jpg", "alt": "Player driving to the basket during a session" },
-    { "image": "assets/strip/still-09.jpg", "alt": "Player finishing a sprint drill" }
+    { "image": "assets/strip/still-01.jpg", "alt": "Player driving toward a coach during a gym drill" },
+    { "image": "assets/strip/still-02.jpg", "alt": "Coach and players between reps at a training session" },
+    { "image": "assets/strip/still-03.jpg", "alt": "Players dribbling downcourt during a session" },
+    { "image": "assets/strip/still-04.jpg", "alt": "Players walking past the agility ladder between drills" },
+    { "image": "assets/strip/still-05.jpg", "alt": "Two players working a passing and catching drill" },
+    { "image": "assets/strip/still-06.jpg", "alt": "Group dribbling warmup on the court" },
+    { "image": "assets/strip/still-07.jpg", "alt": "Two players dribbling side by side during a drill" },
+    { "image": "assets/strip/still-08.jpg", "alt": "Coach and players spaced out during a session" },
+    { "image": "assets/strip/still-09.jpg", "alt": "Player sprinting during a conditioning drill" }
   ]
 }

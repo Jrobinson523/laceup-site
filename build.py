@@ -24,7 +24,6 @@ def render_program_cards(programs):
             '        <div class="card rise">\n'
             f'          <h3>{esc(p["name"])}</h3>\n'
             f'          <p>{esc(p["blurb"])}</p>\n'
-            f'          <div class="status">{esc(p["dates"])}</div>\n'
             '        </div>'
         )
     return "\n".join(blocks)
@@ -33,19 +32,15 @@ def render_program_cards(programs):
 def render_coach_blocks(coaches):
     blocks = []
     for c in coaches:
-        initials = "".join(w[0] for w in c["name"].replace("Coach ", "").split()[:2]).upper()
         items = "\n".join(
             f'            <li>{esc(cr)}</li>' for cr in c["credentials"]
         )
         blocks.append(
             '      <div class="coach rise">\n'
-            f'        <div class="coach-badge">{esc(initials)}</div>\n'
-            '        <div>\n'
-            f'          <h3>{esc(c["name"])}</h3>\n'
-            '          <ul class="coach-credentials">\n'
+            f'        <h3>{esc(c["name"])}</h3>\n'
+            '        <ul class="coach-credentials">\n'
             f'{items}\n'
-            '          </ul>\n'
-            '        </div>\n'
+            '        </ul>\n'
             '      </div>'
         )
     return "\n".join(blocks)
@@ -165,11 +160,17 @@ def main():
     seo = data["seo"]
     about = data["about"]
     resource = data["resource"]
+    # NOTE: flip data["season_tag"] in data/programs.json each January.
+    og_image_url = seo["og_image_host"].rstrip("/") + "/assets/og.jpg"
 
     replacements = {
         "{{TITLE}}": esc(seo["title"]),
         "{{DESCRIPTION}}": esc(seo["description"]),
         "{{CANONICAL}}": esc(seo["canonical"]),
+        "{{OG_IMAGE_URL}}": esc(og_image_url),
+        "{{ROBOTS}}": esc(seo["robots"]),
+        "{{SEASON_TAG}}": esc(data["season_tag"]),
+        "{{PROGRAMS_NOTE}}": esc(data["programs_note"]),
         "{{PHONE_TEL}}": esc(contact["phone_tel"]),
         "{{PHONE_DISPLAY}}": esc(contact["phone_display"]),
         "{{EMAIL}}": esc(contact["email"]),

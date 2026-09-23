@@ -3,32 +3,30 @@
     {
       "name": "1:1 Private Training",
       "tag": "Individual",
-      "blurb": "One-on-one sessions built around your game, your weaknesses, your pace.",
-      "dates": "Fall/winter cycle — dates announced soon"
+      "blurb": "One-on-one sessions focused on your game and your pace, with a coach watching every rep."
     },
     {
       "name": "Small Group Training",
-      "tag": "2-4 players",
-      "blurb": "Same individual attention, shared reps, built-in competition.",
-      "dates": "Fall/winter cycle — dates announced soon"
+      "tag": "2-5 players",
+      "blurb": "Same individual attention, shared reps, built-in competition."
     },
     {
       "name": "Team & Squad Sessions",
       "tag": "Team",
-      "blurb": "Bring your team or AAU squad in for skill work and conditioning.",
-      "dates": "Fall/winter cycle — dates announced soon"
+      "blurb": "Bring your team or AAU squad in for skill work and conditioning."
     },
     {
       "name": "Clinics",
       "tag": "Clinic",
-      "blurb": "Multi-week clinics for players building fundamentals at every level.",
-      "dates": "Fall/winter cycle — dates announced soon"
+      "blurb": "Multi-week clinics for players building fundamentals at every level."
     }
   ],
+  "programs_note": "Fall/winter cycle — dates announced soon.",
+  "season_tag": "Fall / Winter 2026",
   "faq": [
     {
       "q": "Do I need to be at a certain athletic level to train with Lace Up?",
-      "a": "No. Lace Up works with players from beginner to varsity/AAU level. Every plan is built around the individual athlete's current level, not a fixed curriculum."
+      "a": "No. Lace Up works with players from beginner through varsity/AAU. Each plan starts from where the athlete is right now."
     },
     {
       "q": "What are your coaching credentials?",
@@ -71,32 +69,32 @@
         "1995 bronx daily news coach of the year",
         "2000 New York public schools coach of the year",
         "8 Bronx division championships",
-        "Editor and chief, Metro Spirit, publication of profiles and rankings of top high school players in the New York Tri-State area",
+        "Editor in chief, Metro Spirit, publication of profiles and rankings of top high school players in the New York Tri-State area",
         "35+ years coaching experience"
       ]
     }
   ],
   "about": {
     "org": "Lace Up sports is a holistic basketball development, training, and sports navigation organization. We enable student athletes to reach their personal and athletic goals. Our nurturing environment coupled with using \"growth mindset\" techniques has helped many of our student athletes reach the pinnacle of the sports world and beyond. Our staff is committed to pushing each player to the next level. We present an intense and detailed approach to training and playing the game.",
-    "mission": "Our mission is to create young people who approach every obstacle as a opportunity. Our goal is to successfully develop each student athletes confidence, creativity, leadership, teamwork, and sportsmanship.",
+    "mission": "Our mission is to create young people who approach every obstacle as an opportunity. Our goal is to successfully develop each student athletes' confidence, creativity, leadership, teamwork, and sportsmanship.",
     "offer": "Lace Up provides highly seasoned and respected coaches so our student athletes can compete at the highest level. Family and quality instruction are the cornerstones of Lace Up. Our coaches are dedicated to developing relationships with our student athletes and their families."
   },
   "pillars": [
     {
       "label": "Fundamentals",
-      "body": "Footwork, ball handling, shot mechanics. Every session starts here, no matter the age or level."
+      "body": "Every session starts with footwork, ball handling, and shot mechanics, no matter the player's age or level."
     },
     {
       "label": "Mindset",
-      "body": "Growth mindset isn't a poster on the wall. Coach Robinson and Coach Dweck build it into the drills."
+      "body": "Coach Robinson and Coach Dweck coach mindset the same way they coach footwork — every rep, every drill."
     },
     {
-      "label": "Built around you",
-      "body": "One-on-one, small group, or full squad. Sessions are built around what the player needs that day."
+      "label": "Personalized",
+      "body": "Every plan starts with the player in front of us, whether that's a one-on-one session, a small group, or the full squad."
     },
     {
       "label": "Family",
-      "body": "Coach Robinson and Coach Dweck know the families they train, not just the players."
+      "body": "Coach Robinson and Coach Dweck know the families they train as well as the players."
     }
   ],
   "resource": {
@@ -106,7 +104,9 @@
   },
   "seo": {
     "title": "Lace Up Sports — Westchester Basketball Training",
-    "description": "Westchester basketball training led by a 3x collegiate national champion coach. Individual sessions, small groups, camps, and clinics for every level.",
-    "canonical": "https://www.trulaceup.com/"
+    "description": "Westchester basketball training led by a 3x collegiate national champion coach. Individual, small-group, and team training this fall and winter.",
+    "canonical": "https://www.trulaceup.com/",
+    "og_image_host": "https://jrobinson523.github.io/laceup-site/",
+    "robots": "noindex"
   }
 }

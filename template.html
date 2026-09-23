@@ -6,29 +6,36 @@
 <title>{{TITLE}}</title>
 <meta name="description" content="{{DESCRIPTION}}">
 <link rel="canonical" href="{{CANONICAL}}">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="{{ROBOTS}}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{TITLE}}">
 <meta property="og:description" content="{{DESCRIPTION}}">
-<meta property="og:image" content="{{CANONICAL}}assets/hero.jpg">
+<!-- TODO at DNS cutover: switch og:image to {{CANONICAL}}assets/og.jpg -->
+<meta property="og:image" content="{{OG_IMAGE_URL}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="{{CANONICAL}}">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SportsActivityLocation","name":"Lace Up Sports","telephone":"{{PHONE_TEL}}","email":"{{EMAIL}}","areaServed":"Westchester, NY","url":"{{CANONICAL}}","sameAs":["{{INSTAGRAM_URL}}"]}
+</script>
 </head>
 <body>
 
-  <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
   <header class="topnav">
     <div class="wrap topnav-inner">
       <a href="#top" class="wordmark">LACE UP</a>
-      <label for="nav-toggle" class="nav-burger" aria-label="Menu" aria-controls="nav-menu">
+      <button type="button" class="nav-burger" id="navBurger" aria-label="Menu" aria-controls="nav-menu" aria-expanded="false">
         <span></span><span></span><span></span>
-      </label>
+      </button>
       <nav id="nav-menu" class="nav-menu" aria-label="Primary">
         <a href="#top">Home</a>
         <a href="#programs">Programs</a>
@@ -50,13 +57,13 @@
     </video>
     <div class="hero-video-scrim"></div>
     <div class="hero-inner">
-      <h1>Fall training<br>starts <em>now.</em></h1>
-      <p class="hero-sub">Westchester's premier basketball training program. Individual sessions, small group training, team workouts, and clinics — built to elevate your game at every level.</p>
+      <h1>Fall training<br>starts <em>now</em></h1>
+      <p class="hero-sub">Westchester's premier basketball training program. Individual sessions, small group training, team workouts, and clinics — built to sharpen your game at every level.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#book">Book a free discovery call</a>
-        <a class="btn btn-ghost" href="sms:{{PHONE_TEL}}&body=Hi%20Lace%20Up%2C%20I%27d%20like%20to%20ask%20about%20fall%20training">Text us</a>
+        <a class="btn btn-ghost" href="sms:{{PHONE_TEL}}">Text us</a>
       </div>
-      <div class="hero-meta">{{PHONE_DISPLAY}} · Westchester, NY</div>
+      <div class="hero-meta"><a href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a> · Westchester, NY</div>
     </div>
   </section>
 
@@ -67,12 +74,8 @@
         <div class="proof-label">National champion head coach</div>
       </div>
       <div class="proof-item rise">
-        <div class="proof-num">35+</div>
+        <div class="proof-num">65+</div>
         <div class="proof-label">Years combined coaching experience</div>
-      </div>
-      <div class="proof-item rise">
-        <div class="proof-num">1:1</div>
-        <div class="proof-label">Plans built around the individual athlete</div>
       </div>
     </div>
   </section>
@@ -87,19 +90,20 @@
     <div class="bg-video-scrim"></div>
     <div class="wrap bg-video-content">
       <div class="section-head rise">
-        <h2>Programs for fall &amp; winter.</h2>
-        <span class="season-tag">Fall / Winter 2026</span>
+        <h2>Programs for fall &amp; winter</h2>
+        <span class="season-tag">{{SEASON_TAG}}</span>
       </div>
       <div class="cards">
 {{PROGRAM_CARDS}}
       </div>
+      <p class="cards-note">{{PROGRAMS_NOTE}}</p>
     </div>
   </section>
 
   <section class="section-tight" id="way">
     <div class="wrap">
       <div class="section-head rise">
-        <h2>The Lace Up way.</h2>
+        <h2>The Lace Up way</h2>
       </div>
       <div class="pillars">
 {{PILLARS}}
@@ -110,7 +114,7 @@
   <section class="section-tight" id="about">
     <div class="wrap">
       <div class="section-head rise">
-        <h2>About Lace Up.</h2>
+        <h2>About Lace Up</h2>
       </div>
       <div class="about-copy rise">
         <h3>Our Organization</h3>
@@ -139,7 +143,7 @@
   <section class="section-tight" id="resources">
     <div class="wrap">
       <div class="section-head rise">
-        <h2>Free resources.</h2>
+        <h2>Free resources</h2>
       </div>
       <div class="resource-block rise">
         <video class="resource-video" muted loop playsinline controls poster="{{RESOURCE_POSTER}}" preload="none">
@@ -153,7 +157,7 @@
 
   <section class="section-tight" id="gallery">
     <div class="section-head wrap rise">
-      <h2>From the gym.</h2>
+      <h2>From the gym</h2>
     </div>
     <div class="strip" tabindex="0" aria-label="Photos from Lace Up training sessions">
       <div class="strip-track">
@@ -168,7 +172,8 @@
   <section class="section-tight" id="instagram">
     <div class="wrap">
       <div class="section-head rise">
-        <h2>Latest from @laceupsportsny.</h2>
+        <h2>On the court</h2>
+        <p class="section-sub">Session photos — follow @laceupsportsny for the latest.</p>
       </div>
       <div class="ig-grid rise">
 {{IG_TILES}}
@@ -180,7 +185,7 @@
   <section class="section" id="testimonials">
     <div class="wrap">
       <div class="section-head rise">
-        <h2>What Lace Up families say.</h2>
+        <h2>What Lace Up families say</h2>
       </div>
       <div class="testimonials">
 {{TESTIMONIAL_CARDS}}
@@ -191,7 +196,7 @@
   <section class="section" id="book">
     <div class="wrap">
       <div class="section-head rise">
-        <h2>Book a free discovery call.</h2>
+        <h2>Book a free discovery call</h2>
       </div>
       <div class="book-embed">
         <div class="calendly-inline-widget" data-url="{{CALENDLY_URL}}" style="min-width:280px;height:700px;"></div>
@@ -203,7 +208,7 @@
   <section class="section-tight" id="faq">
     <div class="wrap">
       <div class="section-head rise">
-        <h2>Questions, answered.</h2>
+        <h2>Questions, answered</h2>
       </div>
 {{FAQ_ITEMS}}
     </div>
@@ -212,7 +217,7 @@
   <section class="section-tight" id="contact">
     <div class="wrap">
       <div class="section-head rise">
-        <h2>Get in touch.</h2>
+        <h2>Get in touch</h2>
       </div>
       <div class="contact-grid rise">
         <a class="contact-item" href="tel:{{PHONE_TEL}}"><span class="contact-label">Call / Text</span>{{PHONE_DISPLAY}}</a>
@@ -241,60 +246,73 @@
     <a href="#book"><span class="sticky-icon">&#9679;</span>Book</a>
   </nav>
 
-  <!-- Calendly official inline embed script — the one allowed external script -->
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <!-- Mobile nav: open/close + close-on-link-tap. Real <button> = keyboard-operable for free. -->
   <script>
     (function(){
-      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var pairs = [
-        ['heroVideo', 'heroPoster'],
-        ['programsVideo', 'programsPoster'],
-        ['coachesVideo', 'coachesPoster']
-      ];
-      pairs.forEach(function(ids){
-        var video = document.getElementById(ids[0]);
-        var poster = document.getElementById(ids[1]);
-        if (!video) return;
-        if (reduceMotion) { if (poster) poster.hidden = false; return; }
-        video.hidden = false;
-        if (poster) poster.hidden = true;
-        video.play && video.play().catch(function(){
-          video.hidden = true;
-          if (poster) poster.hidden = false;
-        });
+      var btn=document.getElementById('navBurger'), menu=document.getElementById('nav-menu');
+      function close(){ menu.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+      btn.addEventListener('click', function(){
+        var open=menu.classList.toggle('open'); btn.setAttribute('aria-expanded', open);
       });
+      menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
     })();
   </script>
+  <!-- Hero video plays immediately; below-fold program/coach loops play only once scrolled near. -->
   <script>
-    // Count-up for the proof-strip numbers. Runs once per element, first time it enters view.
-    // Respects prefers-reduced-motion (numbers just show final value, no animation).
     (function(){
-      var nums = document.querySelectorAll('.proof-num');
-      if (!nums.length || !window.IntersectionObserver) return;
       var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function swap(video, poster){
+        video.hidden = false;
+        if (poster) poster.hidden = true;
+        video.play && video.play().catch(function(){ video.hidden = true; if (poster) poster.hidden = false; });
+      }
+      var hero = document.getElementById('heroVideo'), heroPoster = document.getElementById('heroPoster');
+      if (hero) { if (reduceMotion) { if (heroPoster) heroPoster.hidden = false; } else { swap(hero, heroPoster); } }
+      var lazy = [['programsVideo','programsPoster'], ['coachesVideo','coachesPoster']];
+      if (reduceMotion || !window.IntersectionObserver) return;
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if (!entry.isIntersecting) return;
           io.unobserve(entry.target);
-          var el = entry.target;
-          var text = el.textContent;
-          var match = text.match(/\d+/);
-          if (!match || reduceMotion) return;
-          var target = parseInt(match[0], 10);
-          var prefix = text.slice(0, match.index);
-          var suffix = text.slice(match.index + match[0].length);
-          var start = performance.now();
-          var dur = 900;
+          var pair = lazy.filter(function(p){ return p[0] === entry.target.id; })[0];
+          if (pair) swap(entry.target, document.getElementById(pair[1]));
+        });
+      }, { rootMargin: '200px' });
+      lazy.forEach(function(p){ var v = document.getElementById(p[0]); if (v) io.observe(v); });
+    })();
+  </script>
+  <!-- Calendly: only load the widget script once #book is about to enter view. -->
+  <script>
+    (function(){
+      var book=document.getElementById('book');
+      function load(){ var s=document.createElement('script'); s.src='https://assets.calendly.com/assets/external/widget.js'; s.async=true; document.body.appendChild(s); }
+      if (!book || !window.IntersectionObserver) { load(); return; }
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){ if (entry.isIntersecting) { io.disconnect(); load(); } });
+      }, { rootMargin: '300px' });
+      io.observe(book);
+    })();
+  </script>
+  <!-- Count-up for the proof-strip numbers. Runs once per element, first time it enters view. -->
+  <script>
+    (function(){
+      var nums=document.querySelectorAll('.proof-num');
+      if (!nums.length || !window.IntersectionObserver) return;
+      var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (!entry.isIntersecting) return; io.unobserve(entry.target);
+          var el=entry.target, text=el.textContent, match=text.match(/\d+/);
+          if (!match || reduce) return;
+          var target=parseInt(match[0],10), prefix=text.slice(0,match.index), suffix=text.slice(match.index+match[0].length), start=performance.now(), dur=900;
           function step(now){
-            var p = Math.min(1, (now - start) / dur);
-            var val = Math.round(target * p);
-            el.textContent = prefix + val + suffix;
-            if (p < 1) requestAnimationFrame(step);
-            else el.textContent = text;
+            var p=Math.min(1,(now-start)/dur);
+            el.textContent = prefix + Math.round(target*p) + suffix;
+            if (p<1) requestAnimationFrame(step); else el.textContent=text;
           }
           requestAnimationFrame(step);
         });
-      }, { threshold: 0.6 });
+      }, { threshold: .6 });
       nums.forEach(function(el){ io.observe(el); });
     })();
   </script>
