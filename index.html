@@ -21,9 +21,25 @@
 </head>
 <body>
 
-  <div class="wordmark">LACE UP</div>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+  <header class="topnav">
+    <div class="wrap topnav-inner">
+      <a href="#top" class="wordmark">LACE UP</a>
+      <label for="nav-toggle" class="nav-burger" aria-label="Menu" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </label>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="#top">Home</a>
+        <a href="#programs">Programs</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-book" href="#book">Book a Free Call</a>
+      </nav>
+    </div>
+  </header>
 
-  <section class="hero">
+  <section class="hero" id="top">
     <picture>
       <img class="hero-poster" id="heroPoster" src="assets/hero.jpg" alt="Lace Up coach running a drill with a player on the court" loading="eager" fetchpriority="high">
     </picture>
@@ -90,24 +106,81 @@
     </div>
   </section>
 
-  <section class="section-tight" id="coaches">
+  <section class="section-tight" id="about">
     <div class="wrap">
       <div class="section-head rise">
-        <h2>Coached by champions.</h2>
+        <h2>About Lace Up.</h2>
+      </div>
+      <div class="about-copy rise">
+        <h3>Our Organization</h3>
+        <p>Lace Up sports is a holistic basketball development, training, and sports navigation organization. We enable student athletes to reach their personal and athletic goals. Our nurturing environment coupled with using &quot;growth mindset&quot; techniques has helped many of our student athletes reach the pinnacle of the sports world and beyond. Our staff is committed to pushing each player to the next level. We present an intense and detailed approach to training and playing the game.</p>
+        <h3>Our Mission</h3>
+        <p>Our mission is to create young people who approach every obstacle as a opportunity. Our goal is to successfully develop each student athletes confidence, creativity, leadership, teamwork, and sportsmanship.</p>
+        <h3>Our Offer</h3>
+        <p>Lace Up provides highly seasoned and respected coaches so our student athletes can compete at the highest level. Family and quality instruction are the cornerstones of Lace Up. Our coaches are dedicated to developing relationships with our student athletes and their families.</p>
       </div>
       <div class="coach rise">
         <div class="coach-badge">RJ</div>
         <div>
           <h3>Coach Robinson Jr.</h3>
-          <p>3x collegiate national champion, 35+ years in the game</p>
+          <ul class="coach-credentials">
+            <li>3-time collegiate national champion as head coach</li>
+            <li>10 national tournament appearances as head Coach and assistant coach</li>
+            <li>4-time regional champion and regional coach of the year</li>
+            <li>4-time district champion and district coach of the year</li>
+            <li>2012 national head coach of the year</li>
+            <li>30+ years coaching experience</li>
+          </ul>
         </div>
       </div>
       <div class="coach rise">
         <div class="coach-badge">VD</div>
         <div>
-          <h3>Vaughn Dweck</h3>
-          <p>Co-coach</p>
+          <h3>Coach Vaughn Dweck</h3>
+          <ul class="coach-credentials">
+            <li>2000 NYC high school PSAL city Champion as head Coach</li>
+            <li>1995 NYC high school PSAL city champion runner up as head Coach</li>
+            <li>1995 bronx daily news coach of the year</li>
+            <li>2000 New York public schools coach of the year</li>
+            <li>8 Bronx division championships</li>
+            <li>Editor and chief, Metro Spirit, publication of profiles and rankings of top high school players in the New York Tri-State area</li>
+            <li>35+ years coaching experience</li>
+          </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="testimonials">
+    <div class="wrap">
+      <div class="section-head rise">
+        <h2>What Lace Up families say.</h2>
+      </div>
+      <div class="testimonials">
+      <figure class="testimonial rise">
+        <blockquote>The basketball coaches, Robinson &amp; Dweck at Lace Up are outstanding. Their dedication, professionalism and ability to connect with the players truly set them apart. They create a positive, motivating environment while teaching strong fundamentals, discipline, teamwork and confidence. Every practice is organized, energetic and focused on helping each athlete improve. Coach Robinson and Coach Dweck are patient, encouraging and genuinely invested in the growth and success of every player both on and off the court. We&#x27;ve had an amazing experience with Lace Up and highly recommend their program to any family looking for quality basketball training and mentorship.</blockquote>
+        <figcaption>Parent</figcaption>
+      </figure>
+      <figure class="testimonial rise">
+        <blockquote>Our daughter has excelled at Lace Up, each year improving physically and mentally. She now plays basketball at the collegiate level which Lace Up had a part in helping build the foundation for her success. We are grateful for all their help through the years.</blockquote>
+        <figcaption>Parent</figcaption>
+      </figure>
+      <figure class="testimonial rise">
+        <blockquote>Lace Up Basketball is a great program for anyone looking to develop their game and become more serious about basketball. Coach Robinson and Coach Vaughn are amazing. My daughter has improved so much in the past year. The program is affordable and flexible giving you the option to go up to 4 days a week; you choose what works for your schedule. I highly recommend Lace Up Basketball!</blockquote>
+        <figcaption>Parent</figcaption>
+      </figure>
+      <figure class="testimonial rise">
+        <blockquote>Lace Up is such a great program and community with excellent coaches that have helped me tremendously with not only my basketball skills, but also my confidence as a player.</blockquote>
+        <figcaption>Player</figcaption>
+      </figure>
+      <figure class="testimonial rise">
+        <blockquote>I&#x27;ve been training with Lace Up since 5th grade, and the impact the program has had on my basketball career has been incredible. They prepared me for the next level and gave me the skills and mindset needed to play college basketball. I would highly recommend the program to any player who is serious about improving their game.</blockquote>
+        <figcaption>Player</figcaption>
+      </figure>
+      <figure class="testimonial rise">
+        <blockquote>LaceUp has been a great experience for me as a player. I&#x27;ve grown so much through the program and have been going since elementary school all the way through college. The coaches really love the game and every single player with all their heart — they would even go out of their way to watch my games. I highly recommend LaceUp to any player looking to grow and improve.</blockquote>
+        <figcaption>Player</figcaption>
+      </figure>
       </div>
     </div>
   </section>
@@ -149,6 +222,21 @@
         <summary>What does training cost?</summary>
         <p class="pending">Pricing information coming soon — ask on your discovery call.</p>
       </details>
+    </div>
+  </section>
+
+  <section class="section-tight" id="contact">
+    <div class="wrap">
+      <div class="section-head rise">
+        <h2>Get in touch.</h2>
+      </div>
+      <div class="contact-grid rise">
+        <a class="contact-item" href="tel:+19149077199"><span class="contact-label">Call / Text</span>(914) 907-7199</a>
+        <a class="contact-item" href="mailto:Trulaceup@gmail.com"><span class="contact-label">Email</span>Trulaceup@gmail.com</a>
+        <a class="contact-item" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener"><span class="contact-label">Instagram</span>@laceupsportsny</a>
+        <div class="contact-item contact-item-static"><span class="contact-label">Location</span>Westchester, NY</div>
+      </div>
+      <a class="btn btn-primary contact-book" href="#book">Book a free discovery call</a>
     </div>
   </section>
 

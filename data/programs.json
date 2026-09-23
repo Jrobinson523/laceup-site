@@ -58,13 +58,33 @@
   "coaches": [
     {
       "name": "Coach Robinson Jr.",
-      "credential": "3x collegiate national champion, 35+ years in the game"
+      "credentials": [
+        "3-time collegiate national champion as head coach",
+        "10 national tournament appearances as head Coach and assistant coach",
+        "4-time regional champion and regional coach of the year",
+        "4-time district champion and district coach of the year",
+        "2012 national head coach of the year",
+        "30+ years coaching experience"
+      ]
     },
     {
-      "name": "Vaughn Dweck",
-      "credential": "Co-coach"
+      "name": "Coach Vaughn Dweck",
+      "credentials": [
+        "2000 NYC high school PSAL city Champion as head Coach",
+        "1995 NYC high school PSAL city champion runner up as head Coach",
+        "1995 bronx daily news coach of the year",
+        "2000 New York public schools coach of the year",
+        "8 Bronx division championships",
+        "Editor and chief, Metro Spirit, publication of profiles and rankings of top high school players in the New York Tri-State area",
+        "35+ years coaching experience"
+      ]
     }
   ],
+  "about": {
+    "org": "Lace Up sports is a holistic basketball development, training, and sports navigation organization. We enable student athletes to reach their personal and athletic goals. Our nurturing environment coupled with using \"growth mindset\" techniques has helped many of our student athletes reach the pinnacle of the sports world and beyond. Our staff is committed to pushing each player to the next level. We present an intense and detailed approach to training and playing the game.",
+    "mission": "Our mission is to create young people who approach every obstacle as a opportunity. Our goal is to successfully develop each student athletes confidence, creativity, leadership, teamwork, and sportsmanship.",
+    "offer": "Lace Up provides highly seasoned and respected coaches so our student athletes can compete at the highest level. Family and quality instruction are the cornerstones of Lace Up. Our coaches are dedicated to developing relationships with our student athletes and their families."
+  },
   "seo": {
     "title": "Lace Up Sports — Westchester Basketball Training",
     "description": "Westchester basketball training led by a 3x collegiate national champion coach. Individual sessions, small groups, camps, and clinics for every level.",

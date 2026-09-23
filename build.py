@@ -34,14 +34,31 @@ def render_coach_blocks(coaches):
     blocks = []
     for c in coaches:
         initials = "".join(w[0] for w in c["name"].replace("Coach ", "").split()[:2]).upper()
+        items = "\n".join(
+            f'            <li>{esc(cr)}</li>' for cr in c["credentials"]
+        )
         blocks.append(
             '      <div class="coach rise">\n'
             f'        <div class="coach-badge">{esc(initials)}</div>\n'
             '        <div>\n'
             f'          <h3>{esc(c["name"])}</h3>\n'
-            f'          <p>{esc(c["credential"])}</p>\n'
+            '          <ul class="coach-credentials">\n'
+            f'{items}\n'
+            '          </ul>\n'
             '        </div>\n'
             '      </div>'
+        )
+    return "\n".join(blocks)
+
+
+def render_testimonial_cards(testimonials):
+    blocks = []
+    for t in testimonials:
+        blocks.append(
+            '      <figure class="testimonial rise">\n'
+            f'        <blockquote>{esc(t["quote"])}</blockquote>\n'
+            f'        <figcaption>{esc(t["voice"])}</figcaption>\n'
+            '      </figure>'
         )
     return "\n".join(blocks)
 
@@ -63,16 +80,20 @@ def render_faq(faq):
 
 def main():
     data_path = os.path.join(ROOT, "data", "programs.json")
+    testimonials_path = os.path.join(ROOT, "data", "testimonials.json")
     template_path = os.path.join(ROOT, "template.html")
     out_path = os.path.join(ROOT, "index.html")
 
     with open(data_path, "r", encoding="utf-8") as f:
         data = json.load(f)
+    with open(testimonials_path, "r", encoding="utf-8") as f:
+        testimonials_data = json.load(f)
     with open(template_path, "r", encoding="utf-8") as f:
         template = f.read()
 
     contact = data["contact"]
     seo = data["seo"]
+    about = data["about"]
 
     replacements = {
         "{{TITLE}}": esc(seo["title"]),
@@ -87,6 +108,10 @@ def main():
         "{{PROGRAM_CARDS}}": render_program_cards(data["programs"]),
         "{{COACH_BLOCKS}}": render_coach_blocks(data["coaches"]),
         "{{FAQ_ITEMS}}": render_faq(data["faq"]),
+        "{{ABOUT_ORG}}": esc(about["org"]),
+        "{{ABOUT_MISSION}}": esc(about["mission"]),
+        "{{ABOUT_OFFER}}": esc(about["offer"]),
+        "{{TESTIMONIAL_CARDS}}": render_testimonial_cards(testimonials_data["testimonials"]),
     }
 
     out = template
