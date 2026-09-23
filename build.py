@@ -78,9 +78,73 @@ def render_faq(faq):
     return "\n".join(blocks)
 
 
+def render_pillars(pillars):
+    blocks = []
+    for p in pillars:
+        blocks.append(
+            '        <div class="pillar rise">\n'
+            f'          <h3>{esc(p["label"])}</h3>\n'
+            f'          <p>{esc(p["body"])}</p>\n'
+            '        </div>'
+        )
+    return "\n".join(blocks)
+
+
+def render_placements_section(placements):
+    if not placements:
+        return ""
+    rows = "\n".join(f'        <li>{esc(p)}</li>' for p in placements)
+    return (
+        '  <section class="section-tight" id="placements">\n'
+        '    <div class="wrap">\n'
+        '      <div class="section-head rise">\n'
+        '        <h2>Where our players went.</h2>\n'
+        '      </div>\n'
+        '      <ul class="placements rise">\n'
+        f'{rows}\n'
+        '      </ul>\n'
+        '    </div>\n'
+        '  </section>\n'
+    )
+
+
+def render_photostrip(stills):
+    tiles = []
+    for s in stills:
+        tiles.append(
+            f'        <img src="{esc(s["image"])}" alt="{esc(s["alt"])}" loading="lazy" width="480" height="600">'
+        )
+    # duplicate the set once so the CSS marquee can loop seamlessly
+    tiles_doubled = tiles + tiles
+    return "\n".join(tiles_doubled)
+
+
+def render_photostrip_grid(stills):
+    blocks = []
+    for s in stills:
+        blocks.append(
+            f'        <img src="{esc(s["image"])}" alt="{esc(s["alt"])}" loading="lazy" width="480" height="600">'
+        )
+    return "\n".join(blocks)
+
+
+def render_ig_tiles(tiles):
+    blocks = []
+    for t in tiles:
+        blocks.append(
+            '        <a class="ig-tile" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">\n'
+            f'          <img src="{esc(t["image"])}" alt="{esc(t["alt"])}" loading="lazy" width="480" height="480">\n'
+            '        </a>'
+        )
+    return "\n".join(blocks)
+
+
 def main():
     data_path = os.path.join(ROOT, "data", "programs.json")
     testimonials_path = os.path.join(ROOT, "data", "testimonials.json")
+    placements_path = os.path.join(ROOT, "data", "placements.json")
+    ig_path = os.path.join(ROOT, "data", "ig.json")
+    photostrip_path = os.path.join(ROOT, "data", "photostrip.json")
     template_path = os.path.join(ROOT, "template.html")
     out_path = os.path.join(ROOT, "index.html")
 
@@ -88,12 +152,19 @@ def main():
         data = json.load(f)
     with open(testimonials_path, "r", encoding="utf-8") as f:
         testimonials_data = json.load(f)
+    with open(placements_path, "r", encoding="utf-8") as f:
+        placements_data = json.load(f)
+    with open(ig_path, "r", encoding="utf-8") as f:
+        ig_data = json.load(f)
+    with open(photostrip_path, "r", encoding="utf-8") as f:
+        photostrip_data = json.load(f)
     with open(template_path, "r", encoding="utf-8") as f:
         template = f.read()
 
     contact = data["contact"]
     seo = data["seo"]
     about = data["about"]
+    resource = data["resource"]
 
     replacements = {
         "{{TITLE}}": esc(seo["title"]),
@@ -112,6 +183,14 @@ def main():
         "{{ABOUT_MISSION}}": esc(about["mission"]),
         "{{ABOUT_OFFER}}": esc(about["offer"]),
         "{{TESTIMONIAL_CARDS}}": render_testimonial_cards(testimonials_data["testimonials"]),
+        "{{PILLARS}}": render_pillars(data["pillars"]),
+        "{{PLACEMENTS_SECTION}}": render_placements_section(placements_data["placements"]),
+        "{{PHOTOSTRIP_TRACK}}": render_photostrip(photostrip_data["stills"]),
+        "{{PHOTOSTRIP_GRID}}": render_photostrip_grid(photostrip_data["stills"]),
+        "{{IG_TILES}}": render_ig_tiles(ig_data["tiles"]),
+        "{{RESOURCE_VIDEO}}": esc(resource["video"]),
+        "{{RESOURCE_POSTER}}": esc(resource["poster"]),
+        "{{RESOURCE_CAPTION}}": esc(resource["caption"]),
     }
 
     out = template

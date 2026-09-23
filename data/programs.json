@@ -85,6 +85,29 @@
     "mission": "Our mission is to create young people who approach every obstacle as a opportunity. Our goal is to successfully develop each student athletes confidence, creativity, leadership, teamwork, and sportsmanship.",
     "offer": "Lace Up provides highly seasoned and respected coaches so our student athletes can compete at the highest level. Family and quality instruction are the cornerstones of Lace Up. Our coaches are dedicated to developing relationships with our student athletes and their families."
   },
+  "pillars": [
+    {
+      "label": "Fundamentals",
+      "body": "Footwork, ball handling, shot mechanics. Every session starts here, no matter the age or level."
+    },
+    {
+      "label": "Mindset",
+      "body": "Growth mindset isn't a poster on the wall. Coach Robinson and Coach Dweck build it into the drills."
+    },
+    {
+      "label": "Built around you",
+      "body": "One-on-one, small group, or full squad. Sessions are built around what the player needs that day."
+    },
+    {
+      "label": "Family",
+      "body": "Coach Robinson and Coach Dweck know the families they train, not just the players."
+    }
+  ],
+  "resource": {
+    "video": "assets/resource-drill.mp4",
+    "poster": "assets/resource-drill-poster.jpg",
+    "caption": "A drill from a Lace Up session."
+  },
   "seo": {
     "title": "Lace Up Sports — Westchester Basketball Training",
     "description": "Westchester basketball training led by a 3x collegiate national champion coach. Individual sessions, small groups, camps, and clinics for every level.",

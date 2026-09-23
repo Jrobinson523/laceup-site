@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -55,6 +56,7 @@
         <a class="btn btn-primary" href="#book">Book a free discovery call</a>
         <a class="btn btn-ghost" href="sms:{{PHONE_TEL}}&body=Hi%20Lace%20Up%2C%20I%27d%20like%20to%20ask%20about%20fall%20training">Text us</a>
       </div>
+      <div class="hero-meta">{{PHONE_DISPLAY}} · Westchester, NY</div>
     </div>
   </section>
 
@@ -75,14 +77,32 @@
     </div>
   </section>
 
-  <section class="section" id="programs">
-    <div class="wrap">
+  <section class="section bg-video-section" id="programs">
+    <picture>
+      <img class="bg-video-poster" id="programsPoster" src="assets/programs-poster.jpg" alt="" loading="lazy" hidden>
+    </picture>
+    <video class="bg-video-media" id="programsVideo" autoplay muted loop playsinline preload="none" poster="assets/programs-poster.jpg" aria-hidden="true" hidden>
+      <source src="assets/programs-loop.mp4" type="video/mp4">
+    </video>
+    <div class="bg-video-scrim"></div>
+    <div class="wrap bg-video-content">
       <div class="section-head rise">
         <h2>Programs for fall &amp; winter.</h2>
         <span class="season-tag">Fall / Winter 2026</span>
       </div>
       <div class="cards">
 {{PROGRAM_CARDS}}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" id="way">
+    <div class="wrap">
+      <div class="section-head rise">
+        <h2>The Lace Up way.</h2>
+      </div>
+      <div class="pillars">
+{{PILLARS}}
       </div>
     </div>
   </section>
@@ -100,7 +120,60 @@
         <h3>Our Offer</h3>
         <p>{{ABOUT_OFFER}}</p>
       </div>
+      <div class="coaches-wrap bg-video-section">
+        <picture>
+          <img class="bg-video-poster" id="coachesPoster" src="assets/coaches-poster.jpg" alt="" loading="lazy" hidden>
+        </picture>
+        <video class="bg-video-media" id="coachesVideo" autoplay muted loop playsinline preload="none" poster="assets/coaches-poster.jpg" aria-hidden="true" hidden>
+          <source src="assets/coaches-loop.mp4" type="video/mp4">
+        </video>
+        <div class="bg-video-scrim"></div>
+        <div class="bg-video-content">
 {{COACH_BLOCKS}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+{{PLACEMENTS_SECTION}}
+  <section class="section-tight" id="resources">
+    <div class="wrap">
+      <div class="section-head rise">
+        <h2>Free resources.</h2>
+      </div>
+      <div class="resource-block rise">
+        <video class="resource-video" muted loop playsinline controls poster="{{RESOURCE_POSTER}}" preload="none">
+          <source src="{{RESOURCE_VIDEO}}" type="video/mp4">
+        </video>
+        <p class="resource-caption">{{RESOURCE_CAPTION}}</p>
+        <a class="resource-faq-link" href="#faq">Full FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" id="gallery">
+    <div class="section-head wrap rise">
+      <h2>From the gym.</h2>
+    </div>
+    <div class="strip" tabindex="0" aria-label="Photos from Lace Up training sessions">
+      <div class="strip-track">
+{{PHOTOSTRIP_TRACK}}
+      </div>
+    </div>
+    <div class="strip-grid wrap">
+{{PHOTOSTRIP_GRID}}
+    </div>
+  </section>
+
+  <section class="section-tight" id="instagram">
+    <div class="wrap">
+      <div class="section-head rise">
+        <h2>Latest from @laceupsportsny.</h2>
+      </div>
+      <div class="ig-grid rise">
+{{IG_TILES}}
+      </div>
+      <a class="ig-more" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">More on Instagram</a>
     </div>
   </section>
 
@@ -172,14 +245,57 @@
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script>
     (function(){
-      var video = document.getElementById('heroVideo');
-      var poster = document.getElementById('heroPoster');
-      if (!video) return;
       var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduceMotion) return; // keep poster only
-      video.hidden = false;
-      poster.hidden = true;
-      video.play && video.play().catch(function(){ video.hidden = true; poster.hidden = false; });
+      var pairs = [
+        ['heroVideo', 'heroPoster'],
+        ['programsVideo', 'programsPoster'],
+        ['coachesVideo', 'coachesPoster']
+      ];
+      pairs.forEach(function(ids){
+        var video = document.getElementById(ids[0]);
+        var poster = document.getElementById(ids[1]);
+        if (!video) return;
+        if (reduceMotion) { if (poster) poster.hidden = false; return; }
+        video.hidden = false;
+        if (poster) poster.hidden = true;
+        video.play && video.play().catch(function(){
+          video.hidden = true;
+          if (poster) poster.hidden = false;
+        });
+      });
+    })();
+  </script>
+  <script>
+    // Count-up for the proof-strip numbers. Runs once per element, first time it enters view.
+    // Respects prefers-reduced-motion (numbers just show final value, no animation).
+    (function(){
+      var nums = document.querySelectorAll('.proof-num');
+      if (!nums.length || !window.IntersectionObserver) return;
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (!entry.isIntersecting) return;
+          io.unobserve(entry.target);
+          var el = entry.target;
+          var text = el.textContent;
+          var match = text.match(/\d+/);
+          if (!match || reduceMotion) return;
+          var target = parseInt(match[0], 10);
+          var prefix = text.slice(0, match.index);
+          var suffix = text.slice(match.index + match[0].length);
+          var start = performance.now();
+          var dur = 900;
+          function step(now){
+            var p = Math.min(1, (now - start) / dur);
+            var val = Math.round(target * p);
+            el.textContent = prefix + val + suffix;
+            if (p < 1) requestAnimationFrame(step);
+            else el.textContent = text;
+          }
+          requestAnimationFrame(step);
+        });
+      }, { threshold: 0.6 });
+      nums.forEach(function(el){ io.observe(el); });
     })();
   </script>
 </body>

@@ -52,6 +52,17 @@ section[id]{scroll-margin-top:74px;}
   display:flex; align-items:center; justify-content:space-between;
   padding:16px 20px; gap:16px; position:relative;
 }
+@media (prefers-reduced-motion: no-preference){
+  .topnav-inner{
+    animation: nav-shrink linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0px 240px;
+  }
+  @keyframes nav-shrink{
+    from{ padding-top:16px; padding-bottom:16px; }
+    to{ padding-top:8px; padding-bottom:8px; }
+  }
+}
 .topnav .wordmark{
   font-family:'Syne',sans-serif;
   font-weight:800; font-size:15px; letter-spacing:.14em;
@@ -198,7 +209,22 @@ section[id]{scroll-margin-top:74px;}
 
 /* ---------- programs ---------- */
 .section-head{margin-bottom:34px;}
-.section-head h2{font-size:clamp(30px,5.5vw,46px); line-height:1.02;}
+.section-head h2{
+  font-size:clamp(30px,5.5vw,46px); line-height:1.02;
+  position:relative; padding-bottom:16px;
+}
+.section-head h2::after{
+  content:""; position:absolute; left:0; bottom:0;
+  width:56px; height:4px; background:var(--orange);
+}
+@media (prefers-reduced-motion: no-preference){
+  .section-head h2::after{
+    animation: rule-draw linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+  }
+  @keyframes rule-draw{ from{width:0;} to{width:56px;} }
+}
 .season-tag{
   display:inline-block; margin-top:14px; padding:6px 14px;
   background:var(--orange-dim); color:var(--orange);
@@ -376,3 +402,101 @@ footer a:hover{border-color:var(--orange); color:var(--orange);}
 }
 .sticky-bar a:last-child{border-right:none; background:var(--orange); color:#0B0B0B;}
 .sticky-icon{font-size:16px;}
+
+/* ---------- hero meta line ---------- */
+.hero-meta{
+  color:var(--muted); font-family:system-ui,sans-serif; font-size:13px;
+  font-weight:600; margin-top:18px; letter-spacing:.02em;
+}
+
+/* ---------- background-video sections (programs / coaches) ---------- */
+.bg-video-section{position:relative; overflow:hidden;}
+.bg-video-media, .bg-video-poster{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center 40%; filter:saturate(.85);
+}
+.bg-video-scrim{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(11,11,11,.94) 0%, rgba(11,11,11,.86) 40%, rgba(11,11,11,.94) 100%);
+}
+.bg-video-content{position:relative; z-index:1;}
+.coaches-wrap{border-radius:var(--radius); border:1px solid var(--line); padding:30px 24px; margin-top:8px;}
+.coaches-wrap .coach{padding:22px 0;}
+.coaches-wrap .coach:first-child{border-top:none;}
+.coaches-wrap .coach:last-child{border-bottom:none;}
+
+/* ---------- the lace up way (pillars) ---------- */
+.pillars{border-top:1px solid var(--line);}
+.pillar{
+  display:grid; grid-template-columns:180px 1fr; gap:20px;
+  padding:22px 0; border-bottom:1px solid var(--line);
+}
+@media (max-width:640px){ .pillar{grid-template-columns:1fr;} }
+.pillar h3{font-size:16px; color:var(--orange); letter-spacing:.01em;}
+.pillar p{
+  color:var(--muted); font-family:system-ui,sans-serif; font-size:14.5px;
+  line-height:1.6; margin:0;
+}
+
+/* ---------- placements wall ---------- */
+.placements{list-style:none; margin:0; padding:0; border-top:1px solid var(--line);}
+.placements li{
+  padding:14px 0; border-bottom:1px solid var(--line);
+  color:var(--ink); font-family:system-ui,sans-serif; font-size:14.5px;
+}
+
+/* ---------- free resources ---------- */
+.resource-block{max-width:640px;}
+.resource-video{
+  width:100%; border-radius:var(--radius); border:1px solid var(--line);
+  display:block; background:#000;
+}
+.resource-caption{
+  color:var(--muted); font-family:system-ui,sans-serif; font-size:13.5px;
+  margin:12px 0 0;
+}
+.resource-faq-link{
+  display:inline-block; margin-top:14px; color:var(--orange);
+  font-family:system-ui,sans-serif; font-size:14px; font-weight:700;
+  text-decoration:none; border-bottom:1px solid var(--orange);
+}
+
+/* ---------- photo strip (drifting marquee) ---------- */
+.strip{overflow:hidden; margin-bottom:0;}
+.strip-track{
+  display:flex; gap:12px; width:max-content;
+  padding:0 20px;
+}
+.strip-track img{
+  width:160px; height:200px; object-fit:cover; border-radius:10px;
+  border:1px solid var(--line); flex:none;
+}
+@media (prefers-reduced-motion: no-preference){
+  .strip-track{ animation: drift 38s linear infinite; }
+  .strip:hover .strip-track, .strip:focus-within .strip-track{ animation-play-state:paused; }
+  @keyframes drift{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  .strip-grid{display:none;}
+}
+@media (prefers-reduced-motion: reduce){
+  .strip{display:none;}
+  .strip-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:10px;
+  }
+  .strip-grid img{width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-radius:10px; border:1px solid var(--line);}
+}
+
+/* ---------- instagram grid ---------- */
+.ig-grid{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:10px;
+}
+@media (max-width:560px){ .ig-grid{grid-template-columns:repeat(2,1fr);} }
+.ig-tile{display:block; border-radius:10px; overflow:hidden; border:1px solid var(--line);}
+.ig-tile img{display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover;}
+.ig-more{
+  display:inline-block; margin-top:16px; color:var(--orange);
+  font-family:system-ui,sans-serif; font-size:14px; font-weight:700;
+  text-decoration:none; border-bottom:1px solid var(--orange);
+}

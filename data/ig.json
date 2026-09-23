@@ -1,0 +1,10 @@
+{
+  "tiles": [
+    { "image": "assets/ig/tile-1.jpg", "alt": "Lace Up Instagram tile" },
+    { "image": "assets/ig/tile-2.jpg", "alt": "Lace Up Instagram tile" },
+    { "image": "assets/ig/tile-3.jpg", "alt": "Lace Up Instagram tile" },
+    { "image": "assets/ig/tile-4.jpg", "alt": "Lace Up Instagram tile" },
+    { "image": "assets/ig/tile-5.jpg", "alt": "Lace Up Instagram tile" },
+    { "image": "assets/ig/tile-6.jpg", "alt": "Lace Up Instagram tile" }
+  ]
+}

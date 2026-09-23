@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -55,6 +56,7 @@
         <a class="btn btn-primary" href="#book">Book a free discovery call</a>
         <a class="btn btn-ghost" href="sms:+19149077199&body=Hi%20Lace%20Up%2C%20I%27d%20like%20to%20ask%20about%20fall%20training">Text us</a>
       </div>
+      <div class="hero-meta">(914) 907-7199 · Westchester, NY</div>
     </div>
   </section>
 
@@ -75,8 +77,15 @@
     </div>
   </section>
 
-  <section class="section" id="programs">
-    <div class="wrap">
+  <section class="section bg-video-section" id="programs">
+    <picture>
+      <img class="bg-video-poster" id="programsPoster" src="assets/programs-poster.jpg" alt="" loading="lazy" hidden>
+    </picture>
+    <video class="bg-video-media" id="programsVideo" autoplay muted loop playsinline preload="none" poster="assets/programs-poster.jpg" aria-hidden="true" hidden>
+      <source src="assets/programs-loop.mp4" type="video/mp4">
+    </video>
+    <div class="bg-video-scrim"></div>
+    <div class="wrap bg-video-content">
       <div class="section-head rise">
         <h2>Programs for fall &amp; winter.</h2>
         <span class="season-tag">Fall / Winter 2026</span>
@@ -106,6 +115,32 @@
     </div>
   </section>
 
+  <section class="section-tight" id="way">
+    <div class="wrap">
+      <div class="section-head rise">
+        <h2>The Lace Up way.</h2>
+      </div>
+      <div class="pillars">
+        <div class="pillar rise">
+          <h3>Fundamentals</h3>
+          <p>Footwork, ball handling, shot mechanics. Every session starts here, no matter the age or level.</p>
+        </div>
+        <div class="pillar rise">
+          <h3>Mindset</h3>
+          <p>Growth mindset isn&#x27;t a poster on the wall. Coach Robinson and Coach Dweck build it into the drills.</p>
+        </div>
+        <div class="pillar rise">
+          <h3>Built around you</h3>
+          <p>One-on-one, small group, or full squad. Sessions are built around what the player needs that day.</p>
+        </div>
+        <div class="pillar rise">
+          <h3>Family</h3>
+          <p>Coach Robinson and Coach Dweck know the families they train, not just the players.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section-tight" id="about">
     <div class="wrap">
       <div class="section-head rise">
@@ -119,6 +154,15 @@
         <h3>Our Offer</h3>
         <p>Lace Up provides highly seasoned and respected coaches so our student athletes can compete at the highest level. Family and quality instruction are the cornerstones of Lace Up. Our coaches are dedicated to developing relationships with our student athletes and their families.</p>
       </div>
+      <div class="coaches-wrap bg-video-section">
+        <picture>
+          <img class="bg-video-poster" id="coachesPoster" src="assets/coaches-poster.jpg" alt="" loading="lazy" hidden>
+        </picture>
+        <video class="bg-video-media" id="coachesVideo" autoplay muted loop playsinline preload="none" poster="assets/coaches-poster.jpg" aria-hidden="true" hidden>
+          <source src="assets/coaches-loop.mp4" type="video/mp4">
+        </video>
+        <div class="bg-video-scrim"></div>
+        <div class="bg-video-content">
       <div class="coach rise">
         <div class="coach-badge">RJ</div>
         <div>
@@ -148,6 +192,92 @@
           </ul>
         </div>
       </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section-tight" id="resources">
+    <div class="wrap">
+      <div class="section-head rise">
+        <h2>Free resources.</h2>
+      </div>
+      <div class="resource-block rise">
+        <video class="resource-video" muted loop playsinline controls poster="assets/resource-drill-poster.jpg" preload="none">
+          <source src="assets/resource-drill.mp4" type="video/mp4">
+        </video>
+        <p class="resource-caption">A drill from a Lace Up session.</p>
+        <a class="resource-faq-link" href="#faq">Full FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" id="gallery">
+    <div class="section-head wrap rise">
+      <h2>From the gym.</h2>
+    </div>
+    <div class="strip" tabindex="0" aria-label="Photos from Lace Up training sessions">
+      <div class="strip-track">
+        <img src="assets/strip/still-01.jpg" alt="Player cutting hard off a screen during a drill" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-02.jpg" alt="Coach walking a player through a defensive stance" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-03.jpg" alt="Ladder work on the baseline" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-04.jpg" alt="Ladder drill in progress, players lined up behind" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-05.jpg" alt="Two players working a passing drill" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-06.jpg" alt="Group warmup at the top of the key" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-07.jpg" alt="Players spaced out for a shooting drill" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-08.jpg" alt="Player driving to the basket during a session" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-09.jpg" alt="Player finishing a sprint drill" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-01.jpg" alt="Player cutting hard off a screen during a drill" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-02.jpg" alt="Coach walking a player through a defensive stance" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-03.jpg" alt="Ladder work on the baseline" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-04.jpg" alt="Ladder drill in progress, players lined up behind" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-05.jpg" alt="Two players working a passing drill" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-06.jpg" alt="Group warmup at the top of the key" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-07.jpg" alt="Players spaced out for a shooting drill" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-08.jpg" alt="Player driving to the basket during a session" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-09.jpg" alt="Player finishing a sprint drill" loading="lazy" width="480" height="600">
+      </div>
+    </div>
+    <div class="strip-grid wrap">
+        <img src="assets/strip/still-01.jpg" alt="Player cutting hard off a screen during a drill" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-02.jpg" alt="Coach walking a player through a defensive stance" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-03.jpg" alt="Ladder work on the baseline" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-04.jpg" alt="Ladder drill in progress, players lined up behind" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-05.jpg" alt="Two players working a passing drill" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-06.jpg" alt="Group warmup at the top of the key" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-07.jpg" alt="Players spaced out for a shooting drill" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-08.jpg" alt="Player driving to the basket during a session" loading="lazy" width="480" height="600">
+        <img src="assets/strip/still-09.jpg" alt="Player finishing a sprint drill" loading="lazy" width="480" height="600">
+    </div>
+  </section>
+
+  <section class="section-tight" id="instagram">
+    <div class="wrap">
+      <div class="section-head rise">
+        <h2>Latest from @laceupsportsny.</h2>
+      </div>
+      <div class="ig-grid rise">
+        <a class="ig-tile" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">
+          <img src="assets/ig/tile-1.jpg" alt="Lace Up Instagram tile" loading="lazy" width="480" height="480">
+        </a>
+        <a class="ig-tile" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">
+          <img src="assets/ig/tile-2.jpg" alt="Lace Up Instagram tile" loading="lazy" width="480" height="480">
+        </a>
+        <a class="ig-tile" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">
+          <img src="assets/ig/tile-3.jpg" alt="Lace Up Instagram tile" loading="lazy" width="480" height="480">
+        </a>
+        <a class="ig-tile" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">
+          <img src="assets/ig/tile-4.jpg" alt="Lace Up Instagram tile" loading="lazy" width="480" height="480">
+        </a>
+        <a class="ig-tile" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">
+          <img src="assets/ig/tile-5.jpg" alt="Lace Up Instagram tile" loading="lazy" width="480" height="480">
+        </a>
+        <a class="ig-tile" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">
+          <img src="assets/ig/tile-6.jpg" alt="Lace Up Instagram tile" loading="lazy" width="480" height="480">
+        </a>
+      </div>
+      <a class="ig-more" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">More on Instagram</a>
     </div>
   </section>
 
@@ -261,14 +391,57 @@
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script>
     (function(){
-      var video = document.getElementById('heroVideo');
-      var poster = document.getElementById('heroPoster');
-      if (!video) return;
       var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduceMotion) return; // keep poster only
-      video.hidden = false;
-      poster.hidden = true;
-      video.play && video.play().catch(function(){ video.hidden = true; poster.hidden = false; });
+      var pairs = [
+        ['heroVideo', 'heroPoster'],
+        ['programsVideo', 'programsPoster'],
+        ['coachesVideo', 'coachesPoster']
+      ];
+      pairs.forEach(function(ids){
+        var video = document.getElementById(ids[0]);
+        var poster = document.getElementById(ids[1]);
+        if (!video) return;
+        if (reduceMotion) { if (poster) poster.hidden = false; return; }
+        video.hidden = false;
+        if (poster) poster.hidden = true;
+        video.play && video.play().catch(function(){
+          video.hidden = true;
+          if (poster) poster.hidden = false;
+        });
+      });
+    })();
+  </script>
+  <script>
+    // Count-up for the proof-strip numbers. Runs once per element, first time it enters view.
+    // Respects prefers-reduced-motion (numbers just show final value, no animation).
+    (function(){
+      var nums = document.querySelectorAll('.proof-num');
+      if (!nums.length || !window.IntersectionObserver) return;
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (!entry.isIntersecting) return;
+          io.unobserve(entry.target);
+          var el = entry.target;
+          var text = el.textContent;
+          var match = text.match(/\d+/);
+          if (!match || reduceMotion) return;
+          var target = parseInt(match[0], 10);
+          var prefix = text.slice(0, match.index);
+          var suffix = text.slice(match.index + match[0].length);
+          var start = performance.now();
+          var dur = 900;
+          function step(now){
+            var p = Math.min(1, (now - start) / dur);
+            var val = Math.round(target * p);
+            el.textContent = prefix + val + suffix;
+            if (p < 1) requestAnimationFrame(step);
+            else el.textContent = text;
+          }
+          requestAnimationFrame(step);
+        });
+      }, { threshold: 0.6 });
+      nums.forEach(function(el){ io.observe(el); });
     })();
   </script>
 </body>
