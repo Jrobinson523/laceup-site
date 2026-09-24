@@ -399,6 +399,8 @@
         video.play && video.play().catch(function(){ video.hidden = true; if (poster) poster.hidden = false; });
       }
       var hero = document.getElementById('heroVideo'), heroPoster = document.getElementById('heroPoster');
+      var portrait = window.matchMedia && window.matchMedia('(max-aspect-ratio: 4/5)').matches;
+      if (portrait) { if (hero) hero.poster = 'assets/hero-portrait.jpg'; if (heroPoster) heroPoster.src = 'assets/hero-portrait.jpg'; }
       if (hero) { if (reduceMotion) { if (heroPoster) heroPoster.hidden = false; } else { swap(hero, heroPoster); } }
       var lazy = [['programsVideo','programsPoster'], ['coachesVideo','coachesPoster']];
       if (reduceMotion || !window.IntersectionObserver) return;
