@@ -106,7 +106,7 @@
     "title": "Lace Up Sports — Westchester Basketball Training",
     "description": "Westchester basketball training led by a 3x collegiate national champion coach. Individual, small-group, and team training this fall and winter.",
     "canonical": "https://www.trulaceup.com/",
-    "og_image_host": "https://jrobinson523.github.io/laceup-site/",
-    "robots": "noindex"
+    "og_image_host": "https://www.trulaceup.com/",
+    "robots": "index, follow"
   }
 }
