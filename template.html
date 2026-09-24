@@ -270,6 +270,7 @@
       var portrait = window.matchMedia && window.matchMedia('(max-aspect-ratio: 4/5)').matches;
       if (portrait) { if (hero) hero.poster = 'assets/hero-portrait.jpg'; if (heroPoster) heroPoster.src = 'assets/hero-portrait.jpg'; }
       if (hero) { if (reduceMotion) { if (heroPoster) heroPoster.hidden = false; } else { swap(hero, heroPoster); } }
+      if (hero && !reduceMotion) { ['touchstart','click'].forEach(function(ev){ document.addEventListener(ev, function(){ if (hero.hidden) swap(hero, heroPoster); }, {once:true, passive:true}); }); }
       var lazy = [['programsVideo','programsPoster'], ['coachesVideo','coachesPoster']];
       if (reduceMotion || !window.IntersectionObserver) return;
       var io = new IntersectionObserver(function(entries){
