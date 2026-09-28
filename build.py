@@ -17,13 +17,21 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
-def render_program_cards(programs):
+def render_program_cards(programs, cta_label, instagram_url):
+    # ages/schedule/price are required: a program missing one fails the
+    # build (KeyError) instead of rendering a guessed value.
     blocks = []
     for p in programs:
         blocks.append(
             '        <div class="card rise">\n'
             f'          <h3>{esc(p["name"])}</h3>\n'
             f'          <p>{esc(p["blurb"])}</p>\n'
+            '          <dl class="card-facts">\n'
+            f'            <div><dt>Ages</dt><dd>{esc(p["ages"])}</dd></div>\n'
+            f'            <div><dt>Schedule</dt><dd>{esc(p["schedule"])}</dd></div>\n'
+            f'            <div><dt>Price</dt><dd>{esc(p["price"])}</dd></div>\n'
+            '          </dl>\n'
+            f'          <a class="btn btn-primary card-cta" href="{esc(instagram_url)}" target="_blank" rel="noopener">{esc(cta_label)}</a>\n'
             '        </div>'
         )
     return "\n".join(blocks)
@@ -177,7 +185,9 @@ def main():
         "{{INSTAGRAM_URL}}": esc(contact["instagram_url"]),
         "{{INSTAGRAM_HANDLE}}": esc(contact["instagram_handle"]),
         "{{CALENDLY_URL}}": esc(contact["calendly_url"]),
-        "{{PROGRAM_CARDS}}": render_program_cards(data["programs"]),
+        "{{PROGRAM_CARDS}}": render_program_cards(
+            data["programs"], data["programs_cta"], contact["instagram_url"]
+        ),
         "{{COACH_BLOCKS}}": render_coach_blocks(data["coaches"]),
         "{{FAQ_ITEMS}}": render_faq(data["faq"]),
         "{{ABOUT_ORG}}": esc(about["org"]),
