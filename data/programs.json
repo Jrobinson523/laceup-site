@@ -3,25 +3,38 @@
     {
       "name": "1:1 Private Training",
       "tag": "Individual",
-      "blurb": "One-on-one sessions focused on your game and your pace, with a coach watching every rep."
+      "blurb": "One-on-one sessions focused on your game and your pace, with a coach watching every rep.",
+      "ages": "All levels, beginner through varsity/AAU",
+      "schedule": "By appointment. Fall/winter dates announced soon.",
+      "price": "Ask us"
     },
     {
       "name": "Small Group Training",
       "tag": "2-5 players",
-      "blurb": "Same individual attention, shared reps, built-in competition."
+      "blurb": "Same individual attention, shared reps, built-in competition.",
+      "ages": "All levels, beginner through varsity/AAU",
+      "schedule": "By appointment. Fall/winter dates announced soon.",
+      "price": "Ask us"
     },
     {
       "name": "Team & Squad Sessions",
       "tag": "Team",
-      "blurb": "Bring your team or AAU squad in for skill work and conditioning."
+      "blurb": "Bring your team or AAU squad in for skill work and conditioning.",
+      "ages": "All levels, beginner through varsity/AAU",
+      "schedule": "By appointment. Fall/winter dates announced soon.",
+      "price": "Ask us"
     },
     {
       "name": "Clinics",
       "tag": "Clinic",
-      "blurb": "Multi-week clinics for players building fundamentals at every level."
+      "blurb": "Multi-week clinics for players building fundamentals at every level.",
+      "ages": "All levels, beginner through varsity/AAU",
+      "schedule": "By appointment. Fall/winter dates announced soon.",
+      "price": "Ask us"
     }
   ],
-  "programs_note": "Fall/winter cycle — dates announced soon.",
+  "programs_cta": "DM HOOPS on Instagram",
+  "programs_note": "Fall/winter cycle. Dates announced soon.",
   "season_tag": "Fall / Winter 2026",
   "faq": [
     {
