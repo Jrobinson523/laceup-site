@@ -48,8 +48,10 @@ def render_coach_blocks(coaches):
     return "\n".join(blocks)
 
 
-def render_testimonial_cards(testimonials):
+def render_testimonial_cards(testimonials, only=None):
     blocks = []
+    if only is not None:
+        testimonials = [testimonials[i] for i in only]
     for t in testimonials:
         blocks.append(
             '      <figure class="testimonial rise">\n'
@@ -105,12 +107,23 @@ def render_placements_section(placements):
     )
 
 
+def pic(src, alt, w, h, widths, sizes, cls="", lazy=True, extra=""):
+    """<picture> with AVIF + WebP variants generated beside the JPEG (name-WIDTH.ext); JPEG fallback."""
+    base = src.rsplit(".", 1)[0]
+    base = base if base.startswith("/") else "/" + base
+    srcj = src if src.startswith("/") else "/" + src
+    av = ", ".join(f"{base}-{x}.avif {x}w" for x in widths)
+    wb = ", ".join(f"{base}-{x}.webp {x}w" for x in widths)
+    c = f' class="{cls}"' if cls else ""
+    ld = ' loading="lazy"' if lazy else ' loading="eager" fetchpriority="high"'
+    return (f'<picture><source type="image/avif" srcset="{av}" sizes="{sizes}"><source type="image/webp" srcset="{wb}" sizes="{sizes}">'
+            f'<img{c} src="{srcj}" alt="{esc(alt)}" width="{w}" height="{h}"{ld} decoding="async"{extra}></picture>')
+
+
 def render_photostrip(stills):
     tiles = []
     for s in stills:
-        tiles.append(
-            f'        <img src="{esc(s["image"])}" alt="{esc(s["alt"])}" loading="lazy" width="480" height="600">'
-        )
+        tiles.append("        " + pic(s["image"], s["alt"], 480, 600, [320, 480], "160px"))
     # duplicate the set once so the CSS marquee can loop seamlessly
     tiles_doubled = tiles + tiles
     return "\n".join(tiles_doubled)
@@ -119,20 +132,7 @@ def render_photostrip(stills):
 def render_photostrip_grid(stills):
     blocks = []
     for s in stills:
-        blocks.append(
-            f'        <img src="{esc(s["image"])}" alt="{esc(s["alt"])}" loading="lazy" width="480" height="600">'
-        )
-    return "\n".join(blocks)
-
-
-def render_ig_tiles(tiles):
-    blocks = []
-    for t in tiles:
-        blocks.append(
-            '        <a class="ig-tile" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">\n'
-            f'          <img src="{esc(t["image"])}" alt="{esc(t["alt"])}" loading="lazy" width="480" height="480">\n'
-            '        </a>'
-        )
+        blocks.append("        " + pic(s["image"], s["alt"], 480, 600, [320, 480], "(max-width: 700px) 33vw, 340px"))
     return "\n".join(blocks)
 
 
@@ -171,7 +171,6 @@ if(!k||!window.IntersectionObserver){l();return;}var o=new IntersectionObserver(
 
 def shell(data, path, title, desc, h1, lede, body, extra_js=""):
     c = data["contact"]; canon = "https://www.trulaceup.com" + path
-    tel = esc(c["phone_tel"]); disp = esc(c["phone_display"])
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -183,8 +182,8 @@ def shell(data, path, title, desc, h1, lede, body, extra_js=""):
 <meta property="og:image" content="https://www.trulaceup.com/assets/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="{canon}"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.png" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#0B0B0B"><meta property="og:site_name" content="Lace Up Sports">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/syne-latin-vf.woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css?v={CSS_V}">
 {schema(data)}
 </head><body>
@@ -200,7 +199,7 @@ def shell(data, path, title, desc, h1, lede, body, extra_js=""):
 <footer><div class="wrap"><div class="foot-wordmark">LACE UP</div>
 <div>Serving {", ".join(data["towns"][:-1])} and {data["towns"][-1]}, NY</div>
 <div class="foot-row"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener">{esc(c["instagram_handle"])}</a> &middot; <a href="mailto:{esc(c["email"])}">{esc(c["email"])}</a></div></div></footer>
-<nav class="sticky-bar" aria-label="Quick actions"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener"><span class="sticky-icon">&#9993;</span>DM</a><a href="{'#book' if path=='/contact/' else '/contact/#book'}"><span class="sticky-icon">&#9679;</span>Book</a></nav>
+<nav class="sticky-bar" aria-label="Quick actions"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener"><span class="sticky-icon" aria-hidden="true">&#9993;</span>DM</a><a href="{'#book' if path=='/contact/' else '/contact/#book'}"><span class="sticky-icon" aria-hidden="true">&#9679;</span>Book a free call</a></nav>
 {SCRIPT % extra_js}
 </body></html>
 '''
@@ -219,7 +218,7 @@ def build(root, data, testimonials):
      ("Clinics", "Clinic", "Multi-week clinics for players building fundamentals, at every level.", ""),
     ]
     cards = "\n".join(f'<div class="card"><span class="season-tag">{tag}</span><h3>{n}</h3><p>{b}</p></div>' for n, tag, b, f in fmt)
-    steps = ("<ol class=\"steps\"><li><strong>Book a free discovery call.</strong> Pick a time online, or call or text us.</li>"
+    steps = ("<ol class=\"steps\"><li><strong>Book a free discovery call.</strong> Pick a time online, or DM us on Instagram.</li>"
              "<li><strong>Talk goals.</strong> A Lace Up coach calls you. We ask about the player's level, goals and schedule.</li>"
              "<li><strong>Get on the schedule.</strong> We match the player to 1:1, small group, team or clinic. Pricing is covered on the call.</li></ol>")
     def fa(a):
@@ -230,11 +229,12 @@ def build(root, data, testimonials):
         "Basketball Programs: 1:1, Small Group, Team | Lace Up Sports Westchester",
         f"Individual, small-group (2-5 players), team and clinic basketball training for players in {towns_s}. Start with a free discovery call.",
         "Basketball training programs", f"Four ways to train with Lace Up, for players from beginner through varsity and AAU in {towns_s}.",
-        f'''<section class="section-tight"><div class="wrap"><div class="section-head"><h2>Pick your format</h2><span class="season-tag">{esc(data["season_tag"])}</span></div>
+        f'''<section class="section-tight"><div class="wrap"><div class="section-head"><p class="eyebrow">Formats</p><h2>Pick your format</h2><span class="season-tag">{esc(data["season_tag"])}</span></div>
 <div class="cards">{cards}</div><p class="cards-note">{esc(data["programs_note"])}</p></div></section>
-<section class="section-tight"><div class="wrap"><div class="section-head"><h2>How it works</h2></div>{steps}
+<section class="section-tight"><div class="wrap"><div class="section-head"><p class="eyebrow">Booking</p><h2>How it works</h2></div>{steps}
 <p class="fine">Families can train more than once a week, up to four days, and choose what fits their schedule.</p></div></section>
-<section class="section-tight"><div class="wrap"><div class="section-head"><h2>Questions</h2></div>{faq}</div></section>''')
+<section class="section-tight"><div class="wrap"><div class="section-head"><p class="eyebrow">FAQ</p><h2>Questions</h2></div>{faq}</div></section>
+<section class="section book-band"><div class="wrap"><p class="eyebrow">Next step</p><h2>Book a free discovery call</h2><p class="band-sub">Pick a time online. A Lace Up coach calls you to talk through goals and get the player on the schedule.</p><div class="cta-row"><a class="btn btn-primary" href="/contact/#book">Pick a time</a></div></div></section>''')
 
     # ---- Testimonials: verbatim only
     tcards = "\n".join(f'<figure class="testimonial"><blockquote>{esc(t["quote"])}</blockquote><figcaption>{esc(t["voice"])}</figcaption></figure>' for t in testimonials)
@@ -242,7 +242,8 @@ def build(root, data, testimonials):
         "Parent & Player Reviews | Lace Up Sports Basketball Training",
         "What parents and players say about Lace Up basketball training in Westchester, in their own words.",
         "What Lace Up families say", "Reviews from parents and players, word for word.",
-        f'<section class="section-tight"><div class="wrap"><div class="testimonials">{tcards}</div></div></section>')
+        f'<section class="section-tight"><div class="wrap"><div class="testimonials">{tcards}</div></div></section>'
+        '<section class="section book-band"><div class="wrap"><p class="eyebrow">Next step</p><h2>Book a free discovery call</h2><p class="band-sub">Pick a time online. A Lace Up coach calls you to talk through goals and get the player on the schedule.</p><div class="cta-row"><a class="btn btn-primary" href="/contact/#book">Pick a time</a></div></div></section>')
 
     # ---- About: live copy, typos already fixed in data
     coaches = "\n".join('<div class="coach"><h3>%s</h3><ul class="coach-credentials">%s</ul></div>' % (esc(k["name"]), "".join(f"<li>{esc(x)}</li>" for x in k["credentials"])) for k in data["coaches"])
@@ -252,7 +253,8 @@ def build(root, data, testimonials):
         "Meet the Lace Up coaches: a 3x collegiate national champion head coach and a NYC PSAL city champion head coach, 65+ years of combined coaching.",
         "About Lace Up", "Two coaches. 65+ years of combined coaching experience.",
         f'''<section class="section-tight"><div class="wrap"><div class="about-copy"><h3>Our Organization</h3><p>{esc(a["org"])}</p><h3>Our Mission</h3><p>{esc(a["mission"])}</p><h3>Our Offer</h3><p>{esc(a["offer"])}</p></div>
-<div class="coaches-wrap"><div class="bg-video-content">{coaches}</div></div></div></section>''')
+<div class="coaches-wrap"><div class="bg-video-content">{coaches}</div></div></div></section>
+<section class="section book-band"><div class="wrap"><p class="eyebrow">Next step</p><h2>Book a free discovery call</h2><p class="band-sub">Pick a time online. A Lace Up coach calls you to talk through goals and get the player on the schedule.</p><div class="cta-row"><a class="btn btn-primary" href="/contact/#book">Pick a time</a></div></div></section>''')
 
     # ---- Contact / booking
     pages["contact/index.html"] = shell(data, "/contact/",
@@ -272,7 +274,7 @@ def build(root, data, testimonials):
         open(os.path.join(root, rel), "w", encoding="utf-8").write(body)
     # sitemap
     urls = ["/"] + ["/" + r.rsplit("index.html", 1)[0] for r in pages]
-    open(os.path.join(root, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>https://www.trulaceup.com{u}</loc></url>\n" for u in urls) + "</urlset>\n")
+    open(os.path.join(root, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>https://www.trulaceup.com{u}</loc><lastmod>{data['seo']['lastmod']}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     print("pages:", ", ".join(pages))
 
 
@@ -280,7 +282,6 @@ def main():
     data_path = os.path.join(ROOT, "data", "programs.json")
     testimonials_path = os.path.join(ROOT, "data", "testimonials.json")
     placements_path = os.path.join(ROOT, "data", "placements.json")
-    ig_path = os.path.join(ROOT, "data", "ig.json")
     photostrip_path = os.path.join(ROOT, "data", "photostrip.json")
     template_path = os.path.join(ROOT, "template.html")
     out_path = os.path.join(ROOT, "index.html")
@@ -291,8 +292,6 @@ def main():
         testimonials_data = json.load(f)
     with open(placements_path, "r", encoding="utf-8") as f:
         placements_data = json.load(f)
-    with open(ig_path, "r", encoding="utf-8") as f:
-        ig_data = json.load(f)
     with open(photostrip_path, "r", encoding="utf-8") as f:
         photostrip_data = json.load(f)
     with open(template_path, "r", encoding="utf-8") as f:
@@ -313,25 +312,22 @@ def main():
         "{{ROBOTS}}": esc(seo["robots"]),
         "{{SEASON_TAG}}": esc(data["season_tag"]),
         "{{PROGRAMS_NOTE}}": esc(data["programs_note"]),
-        "{{PHONE_TEL}}": esc(contact["phone_tel"]),
-        "{{PHONE_DISPLAY}}": esc(contact["phone_display"]),
         "{{EMAIL}}": esc(contact["email"]),
         "{{CSS_V}}": CSS_V,
         "{{INSTAGRAM_URL}}": esc(contact["instagram_url"]),
         "{{INSTAGRAM_HANDLE}}": esc(contact["instagram_handle"]),
-        "{{CALENDLY_URL}}": esc(contact["calendly_url"]),
         "{{PROGRAM_CARDS}}": render_program_cards(data["programs"]),
         "{{COACH_BLOCKS}}": render_coach_blocks(data["coaches"]),
         "{{FAQ_ITEMS}}": render_faq(data["faq"]),
         "{{ABOUT_ORG}}": esc(about["org"]),
         "{{ABOUT_MISSION}}": esc(about["mission"]),
         "{{ABOUT_OFFER}}": esc(about["offer"]),
-        "{{TESTIMONIAL_CARDS}}": render_testimonial_cards(testimonials_data["testimonials"]),
+        "{{TESTIMONIAL_CARDS}}": render_testimonial_cards(testimonials_data["testimonials"], only=[1, 2, 4, 3]),
+        "{{TOWNS}}": esc(", ".join(data["towns"][:-1]) + " and " + data["towns"][-1]),
         "{{PILLARS}}": render_pillars(data["pillars"]),
         "{{PLACEMENTS_SECTION}}": render_placements_section(placements_data["placements"]),
         "{{PHOTOSTRIP_TRACK}}": render_photostrip(photostrip_data["stills"]),
         "{{PHOTOSTRIP_GRID}}": render_photostrip_grid(photostrip_data["stills"]),
-        "{{IG_TILES}}": render_ig_tiles(ig_data["tiles"]),
         "{{RESOURCE_VIDEO}}": esc(resource["video"]),
         "{{RESOURCE_POSTER}}": esc(resource["poster"]),
         "{{RESOURCE_CAPTION}}": esc(resource["caption"]),

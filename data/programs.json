@@ -21,7 +21,7 @@
       "blurb": "Multi-week clinics for players building fundamentals at every level."
     }
   ],
-  "programs_note": "Fall/winter cycle \u2014 dates announced soon.",
+  "programs_note": "Fall/winter cycle. Dates announced soon.",
   "season_tag": "Fall / Winter 2026",
   "faq": [
     {
@@ -34,7 +34,7 @@
     },
     {
       "q": "How do I book a session?",
-      "a": "Book a free discovery call below, or call/text us directly. We'll talk through goals and get you on the schedule."
+      "a": "Book a free discovery call, or DM us on Instagram. We'll talk through goals and get you on the schedule."
     },
     {
       "q": "What does training cost?",
@@ -42,8 +42,6 @@
     }
   ],
   "contact": {
-    "phone_display": "",
-    "phone_tel": "",
     "email": "Trulaceup@gmail.com",
     "instagram_handle": "@laceupsportsny",
     "instagram_url": "https://www.instagram.com/laceupsportsny",
@@ -86,11 +84,11 @@
     },
     {
       "label": "Mindset",
-      "body": "Coach Robinson and Coach Dweck coach mindset the same way they coach footwork \u2014 every rep, every drill."
+      "body": "Coach Robinson and Coach Dweck coach mindset the same way they coach footwork, every rep and every drill."
     },
     {
       "label": "Personalized",
-      "body": "Every plan starts with the player in front of us, whether that's a one-on-one session, a small group, or the full squad."
+      "body": "Every plan starts with the player in front of us, in a one-on-one session, a small group or the full squad."
     },
     {
       "label": "Family",
@@ -107,7 +105,8 @@
     "description": "Basketball training for Westchester players, led by a 3x collegiate national champion coach. Individual, small-group and team training for families in Cortlandt, Peekskill, Yorktown, Croton, Ossining and Mohegan Lake. Book a free discovery call.",
     "canonical": "https://www.trulaceup.com/",
     "og_image_host": "https://www.trulaceup.com/",
-    "robots": "index, follow"
+    "robots": "index, follow",
+    "lastmod": "2026-10-18"
   },
   "towns": [
     "Cortlandt",

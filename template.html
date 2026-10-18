@@ -7,23 +7,22 @@
 <meta name="description" content="{{DESCRIPTION}}">
 <link rel="canonical" href="{{CANONICAL}}">
 <meta name="robots" content="{{ROBOTS}}">
+<meta name="theme-color" content="#0B0B0B">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Lace Up Sports">
 <meta property="og:title" content="{{TITLE}}">
 <meta property="og:description" content="{{DESCRIPTION}}">
-<!-- TODO at DNS cutover: switch og:image to {{CANONICAL}}assets/og.jpg -->
 <meta property="og:image" content="{{OG_IMAGE_URL}}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="{{CANONICAL}}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
-<link rel="stylesheet" href="styles.css?v={{CSS_V}}">
+<link rel="icon" href="/assets/favicon.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/syne-latin-vf.woff2" crossorigin>
+<link rel="preload" as="image" type="image/avif" media="(max-aspect-ratio: 4/5)" imagesrcset="/assets/hero-portrait-540.avif 540w, /assets/hero-portrait-810.avif 810w, /assets/hero-portrait-1080.avif 1080w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" media="(min-aspect-ratio: 4/5)" imagesrcset="/assets/hero-800.avif 800w, /assets/hero-1200.avif 1200w, /assets/hero-1600.avif 1600w" imagesizes="100vw" fetchpriority="high">
+<link rel="stylesheet" href="/styles.css?v={{CSS_V}}">
 {{SCHEMA}}
 </head>
 <body>
@@ -45,62 +44,77 @@
     </div>
   </header>
 
+<main>
   <section class="hero" id="top">
     <picture>
-      <img class="hero-poster" id="heroPoster" src="assets/hero.jpg" alt="Lace Up coach running a drill with a player on the court" loading="eager" fetchpriority="high">
+      <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="/assets/hero-portrait-540.avif 540w, /assets/hero-portrait-810.avif 810w, /assets/hero-portrait-1080.avif 1080w" sizes="100vw">
+      <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="/assets/hero-portrait-540.webp 540w, /assets/hero-portrait-810.webp 810w, /assets/hero-portrait-1080.webp 1080w" sizes="100vw">
+      <source media="(max-aspect-ratio: 4/5)" srcset="/assets/hero-portrait.jpg" sizes="100vw">
+      <source type="image/avif" srcset="/assets/hero-800.avif 800w, /assets/hero-1200.avif 1200w, /assets/hero-1600.avif 1600w" sizes="100vw">
+      <source type="image/webp" srcset="/assets/hero-800.webp 800w, /assets/hero-1200.webp 1200w, /assets/hero-1600.webp 1600w" sizes="100vw">
+      <img class="hero-poster" id="heroPoster" src="/assets/hero.jpg" width="1600" height="2000" alt="Lace Up coach running a drill with a player on the court" loading="eager" fetchpriority="high" decoding="async">
     </picture>
-    <video class="hero-media" id="heroVideo" autoplay muted loop playsinline preload="none" poster="assets/hero.jpg" aria-hidden="true" hidden>
-      <source src="assets/hero-loop-portrait.mp4" type="video/mp4" media="(max-aspect-ratio: 4/5)">
-      <source src="assets/hero-loop.mp4" type="video/mp4">
+    <video class="hero-media" id="heroVideo" muted loop playsinline preload="none" aria-hidden="true" hidden>
+      <source src="/assets/hero-loop.mp4" type="video/mp4">
     </video>
     <div class="hero-video-scrim"></div>
     <div class="hero-inner">
+      <p class="eyebrow hero-eyebrow">Coached by a 3x collegiate national champion head coach</p>
       <h1>Fall training<br>starts <em>now</em></h1>
-      <p class="hero-sub">Westchester's premier basketball training program. Individual sessions, small group training, team workouts, and clinics — built to sharpen your game at every level.</p>
+      <p class="hero-sub">Basketball training in Westchester for players from beginner through varsity and AAU. One-on-one, small group, team sessions and clinics.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#book">Book a free discovery call</a>
+        <a class="btn btn-primary" href="/contact/#book">Book a free discovery call</a>
         <a class="btn btn-ghost" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">DM us on Instagram</a>
       </div>
-      <div class="hero-meta">Westchester, NY</div>
+      <div class="hero-meta">Cortlandt, Peekskill, Yorktown &amp; Westchester, NY</div>
     </div>
   </section>
 
-  <section class="proof">
+  <section class="proof" aria-label="Coaching credentials">
     <div class="wrap proof-grid">
-      <div class="proof-item rise">
+      <div class="proof-item">
         <div class="proof-num">3x</div>
-        <div class="proof-label">National champion head coach</div>
+        <div class="proof-label">Collegiate national champion head coach</div>
       </div>
-      <div class="proof-item rise">
+      <div class="proof-item">
         <div class="proof-num">65+</div>
-        <div class="proof-label">Years combined coaching experience</div>
+        <div class="proof-label">Years of combined coaching experience</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">2</div>
+        <div class="proof-label">Championship head coaches</div>
       </div>
     </div>
   </section>
 
   <section class="section bg-video-section" id="programs">
     <picture>
-      <img class="bg-video-poster" id="programsPoster" src="assets/programs-poster.jpg" alt="" loading="lazy" hidden>
+      <source type="image/avif" srcset="/assets/programs-poster-640.avif 640w, /assets/programs-poster-1280.avif 1280w" sizes="100vw">
+      <source type="image/webp" srcset="/assets/programs-poster-640.webp 640w, /assets/programs-poster-1280.webp 1280w" sizes="100vw">
+      <img class="bg-video-poster" id="programsPoster" src="/assets/programs-poster.jpg" width="1280" height="720" alt="" loading="lazy" decoding="async">
     </picture>
-    <video class="bg-video-media" id="programsVideo" autoplay muted loop playsinline preload="none" poster="assets/programs-poster.jpg" aria-hidden="true" hidden>
-      <source src="assets/programs-loop.mp4" type="video/mp4">
+    <video class="bg-video-media" id="programsVideo" muted loop playsinline preload="none" aria-hidden="true" hidden>
+      <source src="/assets/programs-loop.mp4" type="video/mp4">
     </video>
     <div class="bg-video-scrim"></div>
     <div class="wrap bg-video-content">
-      <div class="section-head rise">
-        <h2>Programs for fall &amp; winter</h2>
+      <div class="section-head">
+        <p class="eyebrow">Programs</p>
+        <h2>Four ways to train</h2>
         <span class="season-tag">{{SEASON_TAG}}</span>
       </div>
       <div class="cards">
 {{PROGRAM_CARDS}}
       </div>
       <p class="cards-note">{{PROGRAMS_NOTE}}</p>
+      <a class="text-link" href="/programs/">See how it works</a>
     </div>
   </section>
 
   <section class="section-tight" id="way">
     <div class="wrap">
-      <div class="section-head rise">
+      <div class="section-head">
+        <p class="eyebrow">How we coach</p>
         <h2>The Lace Up way</h2>
       </div>
       <div class="pillars">
@@ -111,10 +125,11 @@
 
   <section class="section-tight" id="about">
     <div class="wrap">
-      <div class="section-head rise">
-        <h2>About Lace Up</h2>
+      <div class="section-head">
+        <p class="eyebrow">About</p>
+        <h2>Two coaches. 65+ years on the bench.</h2>
       </div>
-      <div class="about-copy rise">
+      <div class="about-copy">
         <h3>Our Organization</h3>
         <p>{{ABOUT_ORG}}</p>
         <h3>Our Mission</h3>
@@ -122,12 +137,14 @@
         <h3>Our Offer</h3>
         <p>{{ABOUT_OFFER}}</p>
       </div>
-      <div class="coaches-wrap bg-video-section">
+      <div class="coaches-wrap bg-video-section" id="coaches">
         <picture>
-          <img class="bg-video-poster" id="coachesPoster" src="assets/coaches-poster.jpg" alt="" loading="lazy" hidden>
+          <source type="image/avif" srcset="/assets/coaches-poster-640.avif 640w, /assets/coaches-poster-1280.avif 1280w" sizes="100vw">
+          <source type="image/webp" srcset="/assets/coaches-poster-640.webp 640w, /assets/coaches-poster-1280.webp 1280w" sizes="100vw">
+          <img class="bg-video-poster" id="coachesPoster" src="/assets/coaches-poster.jpg" width="1280" height="720" alt="" loading="lazy" decoding="async">
         </picture>
-        <video class="bg-video-media" id="coachesVideo" autoplay muted loop playsinline preload="none" poster="assets/coaches-poster.jpg" aria-hidden="true" hidden>
-          <source src="assets/coaches-loop.mp4" type="video/mp4">
+        <video class="bg-video-media" id="coachesVideo" muted loop playsinline preload="none" aria-hidden="true" hidden>
+          <source src="/assets/coaches-loop.mp4" type="video/mp4">
         </video>
         <div class="bg-video-scrim"></div>
         <div class="bg-video-content">
@@ -140,21 +157,23 @@
 {{PLACEMENTS_SECTION}}
   <section class="section-tight" id="resources">
     <div class="wrap">
-      <div class="section-head rise">
-        <h2>Free resources</h2>
+      <div class="section-head">
+        <p class="eyebrow">Free resource</p>
+        <h2>A drill from a session</h2>
       </div>
-      <div class="resource-block rise">
-        <video class="resource-video" muted loop playsinline controls poster="{{RESOURCE_POSTER}}" preload="none">
+      <div class="resource-block">
+        <video class="resource-video" muted loop playsinline controls poster="{{RESOURCE_POSTER}}" preload="none" width="1280" height="720">
           <source src="{{RESOURCE_VIDEO}}" type="video/mp4">
         </video>
         <p class="resource-caption">{{RESOURCE_CAPTION}}</p>
-        <a class="resource-faq-link" href="#faq">Full FAQ</a>
+        <a class="text-link" href="#faq">Read the FAQ</a>
       </div>
     </div>
   </section>
 
   <section class="section-tight" id="gallery">
-    <div class="section-head wrap rise">
+    <div class="section-head wrap">
+      <p class="eyebrow">Gallery</p>
       <h2>From the gym</h2>
     </div>
     <div class="strip" tabindex="0" aria-label="Photos from Lace Up training sessions">
@@ -165,48 +184,39 @@
     <div class="strip-grid wrap">
 {{PHOTOSTRIP_GRID}}
     </div>
-  </section>
-
-  <section class="section-tight" id="instagram">
-    <div class="wrap">
-      <div class="section-head rise">
-        <h2>On the court</h2>
-        <p class="section-sub">Session photos — follow @laceupsportsny for the latest.</p>
-      </div>
-      <div class="ig-grid rise">
-{{IG_TILES}}
-      </div>
-      <a class="ig-more" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">More on Instagram</a>
-    </div>
+    <div class="wrap"><a class="text-link" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">More on Instagram, {{INSTAGRAM_HANDLE}}</a></div>
   </section>
 
   <section class="section" id="testimonials">
     <div class="wrap">
-      <div class="section-head rise">
+      <div class="section-head">
+        <p class="eyebrow">Families</p>
         <h2>What Lace Up families say</h2>
       </div>
       <div class="testimonials">
 {{TESTIMONIAL_CARDS}}
       </div>
+      <a class="text-link" href="/testimonials/">Read all reviews</a>
     </div>
   </section>
 
-  <section class="section" id="book">
+  <section class="section book-band" id="book">
     <div class="wrap">
-      <div class="section-head rise">
-        <h2>Book a free discovery call</h2>
+      <p class="eyebrow">Next step</p>
+      <h2>Book a free discovery call</h2>
+      <p class="band-sub">Pick a time online. A Lace Up coach calls you to talk through goals and get the player on the schedule.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/contact/#book">Pick a time</a>
+        <a class="btn btn-ghost" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">DM us on Instagram</a>
       </div>
-      <div class="book-embed">
-        <div class="calendly-inline-widget" data-url="{{CALENDLY_URL}}" style="min-width:280px;height:700px;"></div>
-      </div>
-      <p class="book-fallback">Widget not loading? Book directly at <a href="{{CALENDLY_URL}}">{{CALENDLY_URL}}</a>, or email <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>.</p>
     </div>
   </section>
 
   <section class="section-tight" id="faq">
     <div class="wrap">
-      <div class="section-head rise">
-        <h2>Questions, answered</h2>
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions</h2>
       </div>
 {{FAQ_ITEMS}}
     </div>
@@ -214,22 +224,23 @@
 
   <section class="section-tight" id="contact">
     <div class="wrap">
-      <div class="section-head rise">
+      <div class="section-head">
+        <p class="eyebrow">Contact</p>
         <h2>Get in touch</h2>
       </div>
-      <div class="contact-grid rise">
+      <div class="contact-grid">
         <a class="contact-item" href="mailto:{{EMAIL}}"><span class="contact-label">Email</span>{{EMAIL}}</a>
         <a class="contact-item" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener"><span class="contact-label">Instagram</span>{{INSTAGRAM_HANDLE}}</a>
-        <div class="contact-item contact-item-static"><span class="contact-label">Location</span>Westchester, NY</div>
+        <div class="contact-item contact-item-static"><span class="contact-label">Serving</span>{{TOWNS}}, NY</div>
       </div>
-      <a class="btn btn-primary contact-book" href="#book">Book a free discovery call</a>
     </div>
   </section>
+</main>
 
   <footer>
     <div class="wrap">
       <div class="foot-wordmark">LACE UP</div>
-      <div>Westchester, NY</div>
+      <div>Serving {{TOWNS}}, NY</div>
       <div class="foot-row">
         <a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">{{INSTAGRAM_HANDLE}}</a>
         <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
@@ -238,8 +249,8 @@
   </footer>
 
   <nav class="sticky-bar" aria-label="Quick actions">
-    <a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener"><span class="sticky-icon">&#9993;</span>DM</a>
-    <a href="#book"><span class="sticky-icon">&#9679;</span>Book</a>
+    <a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener"><span class="sticky-icon" aria-hidden="true">&#9993;</span>DM</a>
+    <a href="/contact/#book"><span class="sticky-icon" aria-hidden="true">&#9679;</span>Book a free call</a>
   </nav>
 
   <!-- Mobile nav: open/close + close-on-link-tap. Real <button> = keyboard-operable for free. -->
@@ -253,67 +264,31 @@
       menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
     })();
   </script>
-  <!-- Hero video plays immediately; below-fold program/coach loops play only once scrolled near. -->
+  <!-- Background loops: landscape desktop only, after load, once the section is near the viewport. Phones, tablets in portrait and reduced-motion keep the still.
+       The observer watches the SECTION, not the hidden <video> (a display:none element never intersects). -->
   <script>
     (function(){
-      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var mq = function(q){ return window.matchMedia && window.matchMedia(q).matches; };
+      var conn = navigator.connection || {};
+      var lite = mq('(prefers-reduced-motion: reduce)') || conn.saveData || /(^|-)2g$/.test(conn.effectiveType||'') || mq('(max-width: 700px)') || mq('(max-aspect-ratio: 4/5)');
+      if (lite || !window.IntersectionObserver) return;
       function swap(video, poster){
         video.hidden = false;
         if (poster) poster.hidden = true;
         video.play && video.play().catch(function(){ video.hidden = true; if (poster) poster.hidden = false; });
       }
-      var hero = document.getElementById('heroVideo'), heroPoster = document.getElementById('heroPoster');
-      var portrait = window.matchMedia && window.matchMedia('(max-aspect-ratio: 4/5)').matches;
-      if (portrait) { if (hero) hero.poster = 'assets/hero-portrait.jpg'; if (heroPoster) heroPoster.src = 'assets/hero-portrait.jpg'; }
-      var conn = navigator.connection || {}; var lite = conn.saveData || /(^|-)2g$/.test(conn.effectiveType||'') || (window.matchMedia && window.matchMedia('(max-width: 700px)').matches);
-      if (hero) { if (reduceMotion || lite) { if (heroPoster) heroPoster.hidden = false; } else { var go=function(){ swap(hero, heroPoster); }; if (document.readyState==='complete') go(); else window.addEventListener('load', go); } }
-      if (hero && !reduceMotion && !lite) { ['touchstart','click'].forEach(function(ev){ document.addEventListener(ev, function(){ if (hero.hidden) swap(hero, heroPoster); }, {once:true, passive:true}); }); }
-      var lazy = [['programsVideo','programsPoster'], ['coachesVideo','coachesPoster']];
-      if (reduceMotion || !window.IntersectionObserver) return;
+      var sections = {top:['heroVideo','heroPoster'], programs:['programsVideo','programsPoster'], coaches:['coachesVideo','coachesPoster']};
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if (!entry.isIntersecting) return;
           io.unobserve(entry.target);
-          var pair = lazy.filter(function(p){ return p[0] === entry.target.id; })[0];
-          if (pair) swap(entry.target, document.getElementById(pair[1]));
+          var pair = sections[entry.target.id];
+          var v = pair && document.getElementById(pair[0]);
+          if (v) swap(v, document.getElementById(pair[1]));
         });
       }, { rootMargin: '200px' });
-      lazy.forEach(function(p){ var v = document.getElementById(p[0]); if (v) io.observe(v); });
-    })();
-  </script>
-  <!-- Calendly: only load the widget script once #book is about to enter view. -->
-  <script>
-    (function(){
-      var book=document.getElementById('book');
-      function load(){ var s=document.createElement('script'); s.src='https://assets.calendly.com/assets/external/widget.js'; s.async=true; document.body.appendChild(s); }
-      if (!book || !window.IntersectionObserver) { load(); return; }
-      var io=new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){ if (entry.isIntersecting) { io.disconnect(); load(); } });
-      }, { rootMargin: '300px' });
-      io.observe(book);
-    })();
-  </script>
-  <!-- Count-up for the proof-strip numbers. Runs once per element, first time it enters view. -->
-  <script>
-    (function(){
-      var nums=document.querySelectorAll('.proof-num');
-      if (!nums.length || !window.IntersectionObserver) return;
-      var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var io=new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (!entry.isIntersecting) return; io.unobserve(entry.target);
-          var el=entry.target, text=el.textContent, match=text.match(/\d+/);
-          if (!match || reduce) return;
-          var target=parseInt(match[0],10), prefix=text.slice(0,match.index), suffix=text.slice(match.index+match[0].length), start=performance.now(), dur=900;
-          function step(now){
-            var p=Math.min(1,(now-start)/dur);
-            el.textContent = prefix + Math.round(target*p) + suffix;
-            if (p<1) requestAnimationFrame(step); else el.textContent=text;
-          }
-          requestAnimationFrame(step);
-        });
-      }, { threshold: .6 });
-      nums.forEach(function(el){ io.observe(el); });
+      function go(){ Object.keys(sections).forEach(function(id){ var s = document.getElementById(id); if (s) io.observe(s); }); }
+      if (document.readyState==='complete') go(); else window.addEventListener('load', go);
     })();
   </script>
 </body>
