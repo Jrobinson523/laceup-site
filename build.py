@@ -9,6 +9,8 @@ Usage: python3 build.py
 import json
 import html
 import os
+import hashlib, pathlib
+CSS_V = hashlib.md5((pathlib.Path(__file__).parent / "styles.css").read_bytes()).hexdigest()[:8]  # cache-buster
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -183,7 +185,7 @@ def shell(data, path, title, desc, h1, lede, body, extra_js=""):
 <link rel="icon" href="/assets/favicon.png" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v={CSS_V}">
 {schema(data)}
 </head><body>
 {NAV}
@@ -314,6 +316,7 @@ def main():
         "{{PHONE_TEL}}": esc(contact["phone_tel"]),
         "{{PHONE_DISPLAY}}": esc(contact["phone_display"]),
         "{{EMAIL}}": esc(contact["email"]),
+        "{{CSS_V}}": CSS_V,
         "{{INSTAGRAM_URL}}": esc(contact["instagram_url"]),
         "{{INSTAGRAM_HANDLE}}": esc(contact["instagram_handle"]),
         "{{CALENDLY_URL}}": esc(contact["calendly_url"]),
