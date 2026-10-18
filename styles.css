@@ -485,3 +485,13 @@ footer a:hover{border-color:var(--orange); color:var(--orange);}
 .steps{padding-left:22px;font-family:system-ui,sans-serif;line-height:1.6;color:var(--muted);} .steps li{margin:0 0 12px;} .steps strong{color:var(--ink);}
 .fine{font-family:system-ui,sans-serif;font-size:14px;color:var(--muted);}
 main details{border-bottom:1px solid var(--line);padding:6px 0;} main details summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:700;} main details p{font-family:system-ui,sans-serif;color:var(--muted);line-height:1.55;}
+
+/* 2026-10-18 phone hero fit (Jimmy: "cut off, doesn't fit"): show the whole photo on top, text below it, no players hidden behind the headline */
+@media (max-width: 700px){
+  .hero{min-height:auto; justify-content:flex-start;}
+  .hero-poster, .hero-media{position:absolute; top:0; left:0; right:0; bottom:auto; height:min(125vw, 62svh); object-position:center 60%;}
+  .hero-video-scrim{top:0; bottom:auto; height:min(125vw, 62svh); background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,.35) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,.45) 100%);}
+  .hero-inner{padding-top:calc(min(125vw, 62svh) - 64px);}
+  .hero h1{font-size:clamp(34px, 10.5vw, 52px);}
+}
+.sticky-bar{grid-template-columns:1fr 1.6fr;}
