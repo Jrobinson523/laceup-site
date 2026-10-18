@@ -178,7 +178,6 @@ def main():
         "{{OG_IMAGE_URL}}": esc(og_image_url),
         "{{ROBOTS}}": esc(seo["robots"]),
         "{{SEASON_TAG}}": esc(data["season_tag"]),
-        "{{PROGRAMS_NOTE}}": esc(data["programs_note"]),
         "{{PHONE_TEL}}": esc(contact["phone_tel"]),
         "{{PHONE_DISPLAY}}": esc(contact["phone_display"]),
         "{{EMAIL}}": esc(contact["email"]),
