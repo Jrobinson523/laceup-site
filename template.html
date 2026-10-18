@@ -24,25 +24,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SportsActivityLocation","name":"Lace Up Sports","telephone":"{{PHONE_TEL}}","email":"{{EMAIL}}","areaServed":"Westchester, NY","url":"{{CANONICAL}}","sameAs":["{{INSTAGRAM_URL}}"]}
-</script>
+{{SCHEMA}}
 </head>
 <body>
 
   <header class="topnav">
     <div class="wrap topnav-inner">
-      <a href="#top" class="wordmark">LACE UP</a>
+      <a href="/" class="wordmark">LACE UP</a>
       <button type="button" class="nav-burger" id="navBurger" aria-label="Menu" aria-controls="nav-menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <nav id="nav-menu" class="nav-menu" aria-label="Primary">
-        <a href="#top">Home</a>
-        <a href="#programs">Programs</a>
-        <a href="#about">About</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-book" href="#book">Book a Free Call</a>
+        <a href="/">Home</a>
+        <a href="/programs/">Programs</a>
+        <a href="/about/">About</a>
+        <a href="/testimonials/">Testimonials</a>
+        <a href="/contact/">Contact</a>
+        <a class="nav-book" href="/contact/#book">Book a Free Call</a>
       </nav>
     </div>
   </header>
@@ -51,7 +49,7 @@
     <picture>
       <img class="hero-poster" id="heroPoster" src="assets/hero.jpg" alt="Lace Up coach running a drill with a player on the court" loading="eager" fetchpriority="high">
     </picture>
-    <video class="hero-media" id="heroVideo" autoplay muted loop playsinline poster="assets/hero.jpg" aria-hidden="true" hidden>
+    <video class="hero-media" id="heroVideo" autoplay muted loop playsinline preload="none" poster="assets/hero.jpg" aria-hidden="true" hidden>
       <source src="assets/hero-loop-portrait.mp4" type="video/mp4" media="(max-aspect-ratio: 4/5)">
       <source src="assets/hero-loop.mp4" type="video/mp4">
     </video>
@@ -269,8 +267,9 @@
       var hero = document.getElementById('heroVideo'), heroPoster = document.getElementById('heroPoster');
       var portrait = window.matchMedia && window.matchMedia('(max-aspect-ratio: 4/5)').matches;
       if (portrait) { if (hero) hero.poster = 'assets/hero-portrait.jpg'; if (heroPoster) heroPoster.src = 'assets/hero-portrait.jpg'; }
-      if (hero) { if (reduceMotion) { if (heroPoster) heroPoster.hidden = false; } else { swap(hero, heroPoster); } }
-      if (hero && !reduceMotion) { ['touchstart','click'].forEach(function(ev){ document.addEventListener(ev, function(){ if (hero.hidden) swap(hero, heroPoster); }, {once:true, passive:true}); }); }
+      var conn = navigator.connection || {}; var lite = conn.saveData || /(^|-)2g$/.test(conn.effectiveType||'') || (window.matchMedia && window.matchMedia('(max-width: 700px)').matches);
+      if (hero) { if (reduceMotion || lite) { if (heroPoster) heroPoster.hidden = false; } else { var go=function(){ swap(hero, heroPoster); }; if (document.readyState==='complete') go(); else window.addEventListener('load', go); } }
+      if (hero && !reduceMotion && !lite) { ['touchstart','click'].forEach(function(ev){ document.addEventListener(ev, function(){ if (hero.hidden) swap(hero, heroPoster); }, {once:true, passive:true}); }); }
       var lazy = [['programsVideo','programsPoster'], ['coachesVideo','coachesPoster']];
       if (reduceMotion || !window.IntersectionObserver) return;
       var io = new IntersectionObserver(function(entries){

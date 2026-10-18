@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lace Up Sports — Westchester Basketball Training</title>
-<meta name="description" content="Westchester basketball training led by a 3x collegiate national champion coach. Individual, small-group, and team training this fall and winter.">
+<title>Lace Up Sports | Basketball Training in Cortlandt, Peekskill &amp; Westchester</title>
+<meta name="description" content="Basketball training for Westchester players, led by a 3x collegiate national champion coach. Individual, small-group and team training for families in Cortlandt, Peekskill, Yorktown, Croton, Ossining and Mohegan Lake. Book a free discovery call.">
 <link rel="canonical" href="https://www.trulaceup.com/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Lace Up Sports — Westchester Basketball Training">
-<meta property="og:description" content="Westchester basketball training led by a 3x collegiate national champion coach. Individual, small-group, and team training this fall and winter.">
+<meta property="og:title" content="Lace Up Sports | Basketball Training in Cortlandt, Peekskill &amp; Westchester">
+<meta property="og:description" content="Basketball training for Westchester players, led by a 3x collegiate national champion coach. Individual, small-group and team training for families in Cortlandt, Peekskill, Yorktown, Croton, Ossining and Mohegan Lake. Book a free discovery call.">
 <!-- TODO at DNS cutover: switch og:image to https://www.trulaceup.com/assets/og.jpg -->
 <meta property="og:image" content="https://www.trulaceup.com/assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -25,24 +25,24 @@
 <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SportsActivityLocation","name":"Lace Up Sports","telephone":"+19149077199","email":"Trulaceup@gmail.com","areaServed":"Westchester, NY","url":"https://www.trulaceup.com/","sameAs":["https://www.instagram.com/laceupsportsny"]}
+{"@context":"https://schema.org","@type":["LocalBusiness","SportsActivityLocation"],"name":"Lace Up Sports","description":"Basketball training for youth and high school players in Westchester, NY.","url":"https://www.trulaceup.com/","telephone":"+19149077199","email":"Trulaceup@gmail.com","image":"https://www.trulaceup.com/assets/og.jpg","sameAs":["https://www.instagram.com/laceupsportsny"],"areaServed":[{"@type":"City","name":"Cortlandt, NY"},{"@type":"City","name":"Peekskill, NY"},{"@type":"City","name":"Yorktown, NY"},{"@type":"City","name":"Croton, NY"},{"@type":"City","name":"Ossining, NY"},{"@type":"City","name":"Mohegan Lake, NY"}],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"1:1 Private Training"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Small Group Training"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Team & Squad Sessions"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Clinics"}}]}
 </script>
 </head>
 <body>
 
   <header class="topnav">
     <div class="wrap topnav-inner">
-      <a href="#top" class="wordmark">LACE UP</a>
+      <a href="/" class="wordmark">LACE UP</a>
       <button type="button" class="nav-burger" id="navBurger" aria-label="Menu" aria-controls="nav-menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <nav id="nav-menu" class="nav-menu" aria-label="Primary">
-        <a href="#top">Home</a>
-        <a href="#programs">Programs</a>
-        <a href="#about">About</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-book" href="#book">Book a Free Call</a>
+        <a href="/">Home</a>
+        <a href="/programs/">Programs</a>
+        <a href="/about/">About</a>
+        <a href="/testimonials/">Testimonials</a>
+        <a href="/contact/">Contact</a>
+        <a class="nav-book" href="/contact/#book">Book a Free Call</a>
       </nav>
     </div>
   </header>
@@ -51,7 +51,7 @@
     <picture>
       <img class="hero-poster" id="heroPoster" src="assets/hero.jpg" alt="Lace Up coach running a drill with a player on the court" loading="eager" fetchpriority="high">
     </picture>
-    <video class="hero-media" id="heroVideo" autoplay muted loop playsinline poster="assets/hero.jpg" aria-hidden="true" hidden>
+    <video class="hero-media" id="heroVideo" autoplay muted loop playsinline preload="none" poster="assets/hero.jpg" aria-hidden="true" hidden>
       <source src="assets/hero-loop-portrait.mp4" type="video/mp4" media="(max-aspect-ratio: 4/5)">
       <source src="assets/hero-loop.mp4" type="video/mp4">
     </video>
@@ -401,8 +401,9 @@
       var hero = document.getElementById('heroVideo'), heroPoster = document.getElementById('heroPoster');
       var portrait = window.matchMedia && window.matchMedia('(max-aspect-ratio: 4/5)').matches;
       if (portrait) { if (hero) hero.poster = 'assets/hero-portrait.jpg'; if (heroPoster) heroPoster.src = 'assets/hero-portrait.jpg'; }
-      if (hero) { if (reduceMotion) { if (heroPoster) heroPoster.hidden = false; } else { swap(hero, heroPoster); } }
-      if (hero && !reduceMotion) { ['touchstart','click'].forEach(function(ev){ document.addEventListener(ev, function(){ if (hero.hidden) swap(hero, heroPoster); }, {once:true, passive:true}); }); }
+      var conn = navigator.connection || {}; var lite = conn.saveData || /(^|-)2g$/.test(conn.effectiveType||'') || (window.matchMedia && window.matchMedia('(max-width: 700px)').matches);
+      if (hero) { if (reduceMotion || lite) { if (heroPoster) heroPoster.hidden = false; } else { var go=function(){ swap(hero, heroPoster); }; if (document.readyState==='complete') go(); else window.addEventListener('load', go); } }
+      if (hero && !reduceMotion && !lite) { ['touchstart','click'].forEach(function(ev){ document.addEventListener(ev, function(){ if (hero.hidden) swap(hero, heroPoster); }, {once:true, passive:true}); }); }
       var lazy = [['programsVideo','programsPoster'], ['coachesVideo','coachesPoster']];
       if (reduceMotion || !window.IntersectionObserver) return;
       var io = new IntersectionObserver(function(entries){

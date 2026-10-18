@@ -21,7 +21,7 @@
       "blurb": "Multi-week clinics for players building fundamentals at every level."
     }
   ],
-  "programs_note": "Fall/winter cycle — dates announced soon.",
+  "programs_note": "Fall/winter cycle \u2014 dates announced soon.",
   "season_tag": "Fall / Winter 2026",
   "faq": [
     {
@@ -86,7 +86,7 @@
     },
     {
       "label": "Mindset",
-      "body": "Coach Robinson and Coach Dweck coach mindset the same way they coach footwork — every rep, every drill."
+      "body": "Coach Robinson and Coach Dweck coach mindset the same way they coach footwork \u2014 every rep, every drill."
     },
     {
       "label": "Personalized",
@@ -103,10 +103,18 @@
     "caption": "A drill from a Lace Up session."
   },
   "seo": {
-    "title": "Lace Up Sports — Westchester Basketball Training",
-    "description": "Westchester basketball training led by a 3x collegiate national champion coach. Individual, small-group, and team training this fall and winter.",
+    "title": "Lace Up Sports | Basketball Training in Cortlandt, Peekskill & Westchester",
+    "description": "Basketball training for Westchester players, led by a 3x collegiate national champion coach. Individual, small-group and team training for families in Cortlandt, Peekskill, Yorktown, Croton, Ossining and Mohegan Lake. Book a free discovery call.",
     "canonical": "https://www.trulaceup.com/",
     "og_image_host": "https://www.trulaceup.com/",
     "robots": "index, follow"
-  }
+  },
+  "towns": [
+    "Cortlandt",
+    "Peekskill",
+    "Yorktown",
+    "Croton",
+    "Ossining",
+    "Mohegan Lake"
+  ]
 }
