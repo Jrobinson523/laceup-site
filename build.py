@@ -144,7 +144,7 @@ def schema(data):
         "name": "Lace Up Sports",
         "description": "Basketball training for youth and high school players in Westchester, NY.",
         "url": data["seo"]["canonical"],
-        "telephone": c["phone_tel"], "email": c["email"],
+        "email": c["email"],
         "image": data["seo"]["og_image_host"].rstrip("/") + "/assets/og.jpg",
         "sameAs": [c["instagram_url"]],
         "areaServed": [{"@type": "City", "name": t + ", NY"} for t in data["towns"]],
@@ -190,15 +190,15 @@ def shell(data, path, title, desc, h1, lede, body, extra_js=""):
 <main>
 <section class="page-head"><div class="wrap">
 <h1>{h1}</h1><p class="page-lede">{lede}</p>
-<div class="cta-row"><a class="btn btn-primary" href="{'#book' if path=='/contact/' else '/contact/#book'}">Book a free discovery call</a><a class="btn btn-ghost" href="sms:{tel}">Text us</a></div>
-<div class="hero-meta"><a href="tel:{tel}">{disp}</a> &middot; {", ".join(data["towns"][:3])} &amp; Westchester, NY</div>
+<div class="cta-row"><a class="btn btn-primary" href="{'#book' if path=='/contact/' else '/contact/#book'}">Book a free discovery call</a><a class="btn btn-ghost" href="{esc(c["instagram_url"])}" target="_blank" rel="noopener">DM us on Instagram</a></div>
+<div class="hero-meta">{", ".join(data["towns"][:3])} &amp; Westchester, NY</div>
 </div></section>
 {body}
 </main>
 <footer><div class="wrap"><div class="foot-wordmark">LACE UP</div>
 <div>Serving {", ".join(data["towns"][:-1])} and {data["towns"][-1]}, NY</div>
-<div class="foot-row"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener">{esc(c["instagram_handle"])}</a> <a href="tel:{tel}">{disp}</a> &middot; <a href="mailto:{esc(c["email"])}">{esc(c["email"])}</a></div></div></footer>
-<nav class="sticky-bar" aria-label="Quick actions"><a href="tel:{tel}"><span class="sticky-icon">&#9742;</span>Call</a><a href="sms:{tel}"><span class="sticky-icon">&#9993;</span>Text</a><a href="{'#book' if path=='/contact/' else '/contact/#book'}"><span class="sticky-icon">&#9679;</span>Book</a></nav>
+<div class="foot-row"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener">{esc(c["instagram_handle"])}</a> &middot; <a href="mailto:{esc(c["email"])}">{esc(c["email"])}</a></div></div></footer>
+<nav class="sticky-bar" aria-label="Quick actions"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener"><span class="sticky-icon">&#9993;</span>DM</a><a href="{'#book' if path=='/contact/' else '/contact/#book'}"><span class="sticky-icon">&#9679;</span>Book</a></nav>
 {SCRIPT % extra_js}
 </body></html>
 '''
@@ -255,12 +255,11 @@ def build(root, data, testimonials):
     # ---- Contact / booking
     pages["contact/index.html"] = shell(data, "/contact/",
         "Book a Free Discovery Call | Lace Up Sports Basketball Training Westchester",
-        f"Book a free discovery call with Lace Up Sports. Basketball training for players in {towns_s}. Call, text, email or pick a time online.",
+        f"Book a free discovery call with Lace Up Sports. Basketball training for players in {towns_s}. Email, DM or pick a time online.",
         "Book a free discovery call", "Pick a time below. A Lace Up coach will call you to talk through goals and get the player on the schedule.",
         f'''<section class="section-tight" id="book"><div class="wrap"><div class="book-embed"><div class="calendly-inline-widget" data-url="{esc(c["calendly_url"])}" style="min-width:280px;height:700px;"></div></div>
-<p class="book-fallback">Widget not loading? Book at <a href="{esc(c["calendly_url"])}">{esc(c["calendly_url"])}</a>, call or text <a href="tel:{esc(c["phone_tel"])}">{esc(c["phone_display"])}</a>, or email <a href="mailto:{esc(c["email"])}">{esc(c["email"])}</a>.</p></div></section>
+<p class="book-fallback">Widget not loading? Book at <a href="{esc(c["calendly_url"])}">{esc(c["calendly_url"])}</a>, or email <a href="mailto:{esc(c["email"])}">{esc(c["email"])}</a>.</p></div></section>
 <section class="section-tight"><div class="wrap"><div class="contact-grid">
-<a class="contact-item" href="tel:{esc(c["phone_tel"])}"><span class="contact-label">Call / Text</span>{esc(c["phone_display"])}</a>
 <a class="contact-item" href="mailto:{esc(c["email"])}"><span class="contact-label">Email</span>{esc(c["email"])}</a>
 <a class="contact-item" href="{esc(c["instagram_url"])}" target="_blank" rel="noopener"><span class="contact-label">Instagram</span>{esc(c["instagram_handle"])}</a>
 <div class="contact-item contact-item-static"><span class="contact-label">Serving</span>{towns_s}</div></div></div></section>''', CAL)

@@ -59,9 +59,9 @@
       <p class="hero-sub">Westchester's premier basketball training program. Individual sessions, small group training, team workouts, and clinics — built to sharpen your game at every level.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#book">Book a free discovery call</a>
-        <a class="btn btn-ghost" href="sms:{{PHONE_TEL}}">Text us</a>
+        <a class="btn btn-ghost" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">DM us on Instagram</a>
       </div>
-      <div class="hero-meta"><a href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a> · Westchester, NY</div>
+      <div class="hero-meta">Westchester, NY</div>
     </div>
   </section>
 
@@ -199,7 +199,7 @@
       <div class="book-embed">
         <div class="calendly-inline-widget" data-url="{{CALENDLY_URL}}" style="min-width:280px;height:700px;"></div>
       </div>
-      <p class="book-fallback">Widget not loading? Book directly at <a href="{{CALENDLY_URL}}">{{CALENDLY_URL}}</a>, call/text <a href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a>, or email <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>.</p>
+      <p class="book-fallback">Widget not loading? Book directly at <a href="{{CALENDLY_URL}}">{{CALENDLY_URL}}</a>, or email <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>.</p>
     </div>
   </section>
 
@@ -218,7 +218,6 @@
         <h2>Get in touch</h2>
       </div>
       <div class="contact-grid rise">
-        <a class="contact-item" href="tel:{{PHONE_TEL}}"><span class="contact-label">Call / Text</span>{{PHONE_DISPLAY}}</a>
         <a class="contact-item" href="mailto:{{EMAIL}}"><span class="contact-label">Email</span>{{EMAIL}}</a>
         <a class="contact-item" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener"><span class="contact-label">Instagram</span>{{INSTAGRAM_HANDLE}}</a>
         <div class="contact-item contact-item-static"><span class="contact-label">Location</span>Westchester, NY</div>
@@ -233,14 +232,13 @@
       <div>Westchester, NY</div>
       <div class="foot-row">
         <a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">{{INSTAGRAM_HANDLE}}</a>
-        <a href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a> · <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
+        <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
       </div>
     </div>
   </footer>
 
   <nav class="sticky-bar" aria-label="Quick actions">
-    <a href="tel:{{PHONE_TEL}}"><span class="sticky-icon">&#9742;</span>Call</a>
-    <a href="sms:{{PHONE_TEL}}"><span class="sticky-icon">&#9993;</span>Text</a>
+    <a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener"><span class="sticky-icon">&#9993;</span>DM</a>
     <a href="#book"><span class="sticky-icon">&#9679;</span>Book</a>
   </nav>
 
