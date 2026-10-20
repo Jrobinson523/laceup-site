@@ -20,9 +20,10 @@
 <link rel="icon" href="/assets/favicon.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/syne-latin-vf.woff2" crossorigin>
-<link rel="preload" as="image" type="image/avif" media="(max-aspect-ratio: 4/5)" imagesrcset="/assets/hero-portrait-540.avif 540w, /assets/hero-portrait-810.avif 810w, /assets/hero-portrait-1080.avif 1080w" imagesizes="100vw" fetchpriority="high">
-<link rel="preload" as="image" type="image/avif" media="(min-aspect-ratio: 4/5)" imagesrcset="/assets/hero-800.avif 800w, /assets/hero-1200.avif 1200w, /assets/hero-1600.avif 1600w" imagesizes="100vw" fetchpriority="high">
-<link rel="stylesheet" href="/styles.css?v=1196a5dd">
+<link rel="preload" as="image" type="image/avif" imagesrcset="/assets/hero-portrait-540.avif 540w, /assets/hero-portrait-810.avif 810w, /assets/hero-portrait-1080.avif 1080w" imagesizes="(max-width: 700px) 100vw, 44vw" fetchpriority="high">
+<link rel="preconnect" href="https://assets.calendly.com">
+<link rel="stylesheet" href="/styles.css?v=2b352f09">
+<script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":["LocalBusiness","SportsActivityLocation"],"name":"Lace Up Sports","description":"Basketball training for youth and high school players in Westchester, NY.","url":"https://www.trulaceup.com/","email":"Trulaceup@gmail.com","image":"https://www.trulaceup.com/assets/og.jpg","sameAs":["https://www.instagram.com/laceupsportsny"],"areaServed":[{"@type":"City","name":"Cortlandt, NY"},{"@type":"City","name":"Peekskill, NY"},{"@type":"City","name":"Yorktown, NY"},{"@type":"City","name":"Croton, NY"},{"@type":"City","name":"Ossining, NY"},{"@type":"City","name":"Mohegan Lake, NY"}],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"1:1 Private Training"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Small Group Training"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Team & Squad Sessions"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Clinics"}}]}
 </script>
@@ -41,183 +42,148 @@
         <a href="/about/">About</a>
         <a href="/testimonials/">Testimonials</a>
         <a href="/contact/">Contact</a>
-        <a class="nav-book" href="/contact/#book">Book a Free Call</a>
+        <a class="nav-book js-book" href="/contact/#book">Book a free call</a>
       </nav>
     </div>
   </header>
 
 <main>
   <section class="hero" id="top">
-    <picture>
-      <source media="(max-aspect-ratio: 4/5)" type="image/avif" srcset="/assets/hero-portrait-540.avif 540w, /assets/hero-portrait-810.avif 810w, /assets/hero-portrait-1080.avif 1080w" sizes="100vw">
-      <source media="(max-aspect-ratio: 4/5)" type="image/webp" srcset="/assets/hero-portrait-540.webp 540w, /assets/hero-portrait-810.webp 810w, /assets/hero-portrait-1080.webp 1080w" sizes="100vw">
-      <source media="(max-aspect-ratio: 4/5)" srcset="/assets/hero-portrait.jpg" sizes="100vw">
-      <source type="image/avif" srcset="/assets/hero-800.avif 800w, /assets/hero-1200.avif 1200w, /assets/hero-1600.avif 1600w" sizes="100vw">
-      <source type="image/webp" srcset="/assets/hero-800.webp 800w, /assets/hero-1200.webp 1200w, /assets/hero-1600.webp 1600w" sizes="100vw">
-      <img class="hero-poster" id="heroPoster" src="/assets/hero.jpg" width="1600" height="2000" alt="Lace Up trainer running a drill with a player on the court" loading="eager" fetchpriority="high" decoding="async">
-    </picture>
-    <video class="hero-media" id="heroVideo" muted loop playsinline preload="none" aria-hidden="true" hidden>
-      <source src="/assets/hero-loop.mp4" type="video/mp4">
-    </video>
-    <div class="hero-video-scrim"></div>
-    <div class="hero-inner">
-      <h1>Fall training<br>starts <em>now</em></h1>
+    <div class="hero-photo">
+      <picture>
+        <source type="image/avif" srcset="/assets/hero-portrait-540.avif 540w, /assets/hero-portrait-810.avif 810w, /assets/hero-portrait-1080.avif 1080w" sizes="(max-width: 700px) 100vw, 44vw">
+        <source type="image/webp" srcset="/assets/hero-portrait-540.webp 540w, /assets/hero-portrait-810.webp 810w, /assets/hero-portrait-1080.webp 1080w" sizes="(max-width: 700px) 100vw, 44vw">
+        <img src="/assets/hero-portrait.jpg" width="1600" height="2000" alt="Lace Up trainer watching a player's shot on its way to the rim" loading="eager" fetchpriority="high" decoding="async">
+      </picture>
+    </div>
+    <div class="hero-copy">
+      <h1><span class="line"><span>Fall training</span></span><span class="line"><span>starts <em>now</em></span></span></h1>
       <p class="hero-cred">Training with a 3x collegiate national champion</p>
       <p class="hero-sub">Basketball training in Westchester for players from beginner through varsity and AAU. One-on-one, small group, team sessions and clinics.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="/contact/#book">Book a free discovery call</a>
-        <a class="btn btn-ghost" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">DM us on Instagram</a>
+        <a class="btn btn-primary js-book" href="/contact/#book">Book a free discovery call</a>
+        <a class="text-link" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">DM us on Instagram</a>
       </div>
       <div class="hero-meta">Cortlandt, Peekskill, Yorktown &amp; Westchester, NY</div>
     </div>
   </section>
 
-  <section class="proof" aria-label="Coaching credentials">
-    <div class="wrap proof-grid">
-      <div class="proof-item">
-        <div class="proof-num">3x</div>
-        <div class="proof-label">Collegiate national champion head coach</div>
+  <section class="band" aria-label="Coaching credentials">
+    <div class="band-grid">
+      <div class="band-item">
+        <div class="band-num">3x</div>
+        <div class="band-label">Collegiate national champion head coach</div>
       </div>
-      <div class="proof-item">
-        <div class="proof-num">65+</div>
-        <div class="proof-label">Years of combined coaching experience</div>
-      </div>
-      <div class="proof-item">
-        <div class="proof-num">2</div>
-        <div class="proof-label">Championship-winning trainers</div>
+      <div class="band-item">
+        <div class="band-num" data-count="65" data-suffix="+">65+</div>
+        <div class="band-label">Years of combined coaching experience</div>
       </div>
     </div>
   </section>
 
-  <section class="section bg-video-section" id="programs">
-    <picture>
-      <source type="image/avif" srcset="/assets/programs-poster-640.avif 640w, /assets/programs-poster-1280.avif 1280w" sizes="100vw">
-      <source type="image/webp" srcset="/assets/programs-poster-640.webp 640w, /assets/programs-poster-1280.webp 1280w" sizes="100vw">
-      <img class="bg-video-poster" id="programsPoster" src="/assets/programs-poster.jpg" width="1280" height="720" alt="" loading="lazy" decoding="async">
-    </picture>
-    <video class="bg-video-media" id="programsVideo" muted loop playsinline preload="none" aria-hidden="true" hidden>
-      <source src="/assets/programs-loop.mp4" type="video/mp4">
-    </video>
-    <div class="bg-video-scrim"></div>
-    <div class="wrap bg-video-content">
-      <div class="section-head">
-        <h2>Four ways to train</h2>
-        <span class="season-tag">Fall / Winter 2026</span>
-      </div>
-      <div class="cards">
-        <div class="card rise">
-          <h3>1:1 Private Training</h3>
-          <p>One-on-one sessions focused on your game and your pace, with a trainer watching every rep.</p>
-        </div>
-        <div class="card rise">
-          <h3>Small Group Training</h3>
-          <p>Same individual attention, shared reps, built-in competition.</p>
-        </div>
-        <div class="card rise">
-          <h3>Team &amp; Squad Sessions</h3>
-          <p>Bring your team or AAU squad in for skill work and conditioning.</p>
-        </div>
-        <div class="card rise">
-          <h3>Clinics</h3>
-          <p>Multi-week clinics for players building fundamentals at every level.</p>
-        </div>
-      </div>
-      <p class="cards-note">Fall/winter cycle. Dates announced soon.</p>
-      <a class="text-link" href="/programs/">See how it works</a>
-    </div>
-  </section>
-
-  <section class="section-tight" id="way">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>The Lace Up way</h2>
-      </div>
-      <div class="pillars">
-        <div class="pillar rise">
-          <h3>Fundamentals</h3>
-          <p>Every session starts with footwork, ball handling, and shot mechanics, no matter the player&#x27;s age or level.</p>
-        </div>
-        <div class="pillar rise">
-          <h3>Mindset</h3>
-          <p>Robinson and Dweck train mindset the same way they train footwork, every rep and every drill.</p>
-        </div>
-        <div class="pillar rise">
-          <h3>Personalized</h3>
-          <p>Every plan starts with the player in front of us, in a one-on-one session, a small group or the full squad.</p>
-        </div>
-        <div class="pillar rise">
-          <h3>Family</h3>
-          <p>Robinson and Dweck know the families they train as well as the players.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-tight" id="about">
+  <section class="section" id="coaches">
     <div class="wrap">
       <div class="section-head">
         <h2>Two coaches. 65+ years on the bench.</h2>
       </div>
-      <div class="about-copy">
-        <h3>Our Organization</h3>
-        <p>Lace Up sports is a holistic basketball development, training, and sports navigation organization. We enable student athletes to reach their personal and athletic goals. Our nurturing environment coupled with using &quot;growth mindset&quot; techniques has helped many of our student athletes reach the pinnacle of the sports world and beyond. Our staff is committed to pushing each player to the next level. We present an intense and detailed approach to training and playing the game.</p>
-        <h3>Our Mission</h3>
-        <p>Our mission is to create young people who approach every obstacle as an opportunity. Our goal is to successfully develop each student athletes&#x27; confidence, creativity, leadership, teamwork, and sportsmanship.</p>
-        <h3>Our Offer</h3>
-        <p>Lace Up provides highly seasoned and respected trainers so our student athletes can compete at the highest level. Family and quality instruction are the cornerstones of Lace Up. Our coaches are dedicated to developing relationships with our student athletes and their families.</p>
-      </div>
-      <div class="coaches-wrap bg-video-section" id="coaches">
-        <picture>
-          <source type="image/avif" srcset="/assets/coaches-poster-640.avif 640w, /assets/coaches-poster-1280.avif 1280w" sizes="100vw">
-          <source type="image/webp" srcset="/assets/coaches-poster-640.webp 640w, /assets/coaches-poster-1280.webp 1280w" sizes="100vw">
-          <img class="bg-video-poster" id="coachesPoster" src="/assets/coaches-poster.jpg" width="1280" height="720" alt="" loading="lazy" decoding="async">
-        </picture>
-        <video class="bg-video-media" id="coachesVideo" muted loop playsinline preload="none" aria-hidden="true" hidden>
-          <source src="/assets/coaches-loop.mp4" type="video/mp4">
-        </video>
-        <div class="bg-video-scrim"></div>
-        <div class="bg-video-content">
-      <div class="coach rise">
+      <div class="record">
+      <div class="coach">
         <h3>James Robinson Jr.</h3>
-        <ul class="coach-credentials">
-            <li>3-time collegiate national champion as head coach</li>
-            <li>10 national tournament appearances as head Coach and assistant coach</li>
-            <li>4-time regional champion and regional coach of the year</li>
-            <li>4-time district champion and district coach of the year</li>
-            <li>2012 national head coach of the year</li>
-            <li>30+ years coaching experience</li>
-        </ul>
+        <ol class="ledger" data-reveal>
+            <li class="row" style="--i:0"><span class="fig">3-time</span><p class="txt-ink">collegiate national champion as head coach</p></li>
+            <li class="row" style="--i:1"><span class="fig">10</span><p class="txt-ink">national tournament appearances as head Coach and assistant coach</p></li>
+            <li class="row" style="--i:2"><span class="fig">4-time</span><p class="txt-ink">regional champion and regional coach of the year</p></li>
+            <li class="row" style="--i:3"><span class="fig">4-time</span><p class="txt-ink">district champion and district coach of the year</p></li>
+            <li class="row" style="--i:4"><span class="fig">2012</span><p class="txt-ink">national head coach of the year</p></li>
+            <li class="row" style="--i:5"><span class="fig">30+</span><p class="txt-ink">years coaching experience</p></li>
+        </ol>
       </div>
-      <div class="coach rise">
+      <div class="coach">
         <h3>Vaughn Dweck</h3>
-        <ul class="coach-credentials">
-            <li>2000 NYC high school PSAL city Champion as head Coach</li>
-            <li>1995 NYC high school PSAL city champion runner up as head Coach</li>
-            <li>1995 bronx daily news coach of the year</li>
-            <li>2000 New York public schools coach of the year</li>
-            <li>8 Bronx division championships</li>
-            <li>Editor in chief, Metro Spirit, publication of profiles and rankings of top high school players in the New York Tri-State area</li>
-            <li>35+ years coaching experience</li>
-        </ul>
+        <ol class="ledger" data-reveal>
+            <li class="row" style="--i:0"><span class="fig">2000</span><p class="txt-ink">NYC high school PSAL city Champion as head Coach</p></li>
+            <li class="row" style="--i:1"><span class="fig">1995</span><p class="txt-ink">NYC high school PSAL city champion runner up as head Coach</p></li>
+            <li class="row" style="--i:2"><span class="fig">1995</span><p class="txt-ink">bronx daily news coach of the year</p></li>
+            <li class="row" style="--i:3"><span class="fig">2000</span><p class="txt-ink">New York public schools coach of the year</p></li>
+            <li class="row" style="--i:4"><span class="fig">8</span><p class="txt-ink">Bronx division championships</p></li>
+            <li class="row" style="--i:5"><span class="fig"></span><p class="txt-ink">Editor in chief, Metro Spirit, publication of profiles and rankings of top high school players in the New York Tri-State area</p></li>
+            <li class="row" style="--i:6"><span class="fig">35+</span><p class="txt-ink">years coaching experience</p></li>
+        </ol>
       </div>
-        </div>
       </div>
+      <a class="text-link after-ledger" href="/about/">About Lace Up</a>
+    </div>
+  </section>
+
+  <section class="section" id="programs">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Four ways to train</h2>
+        <span class="season-tag">Fall / Winter 2026</span>
+      </div>
+      <ol class="ledger" data-reveal>
+        <li class="row" style="--i:0">
+          <span class="fig">Individual</span>
+          <div class="txt"><h3>1:1 Private Training</h3><p>One-on-one sessions focused on your game and your pace, with a trainer watching every rep.</p></div>
+        </li>
+        <li class="row" style="--i:1">
+          <span class="fig">2-5 players</span>
+          <div class="txt"><h3>Small Group Training</h3><p>Same individual attention, shared reps, built-in competition.</p></div>
+        </li>
+        <li class="row" style="--i:2">
+          <span class="fig">Team</span>
+          <div class="txt"><h3>Team &amp; Squad Sessions</h3><p>Bring your team or AAU squad in for skill work and conditioning.</p></div>
+        </li>
+        <li class="row" style="--i:3">
+          <span class="fig">Clinic</span>
+          <div class="txt"><h3>Clinics</h3><p>Multi-week clinics for players building fundamentals at every level.</p></div>
+        </li>
+      </ol>
+      <p class="cards-note">Fall/winter cycle. Dates announced soon.</p>
+      <a class="text-link after-ledger" href="/programs/">See how it works</a>
+    </div>
+  </section>
+
+  <figure class="break">
+    <picture>
+      <source media="(max-width: 700px)" type="image/avif" srcset="/assets/break-portrait-576.avif">
+      <source media="(max-width: 700px)" type="image/webp" srcset="/assets/break-portrait-576.webp">
+      <source media="(max-width: 700px)" srcset="/assets/break-portrait.jpg">
+      <source type="image/avif" srcset="/assets/break-640.avif 640w, /assets/break-1280.avif 1280w" sizes="100vw">
+      <source type="image/webp" srcset="/assets/break-640.webp 640w, /assets/break-1280.webp 1280w" sizes="100vw">
+      <img src="/assets/break.jpg" width="1280" height="720" alt="Player sprinting during a conditioning drill" loading="lazy" decoding="async">
+    </picture>
+  </figure>
+
+  <section class="section" id="way">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The Lace Up way</h2>
+      </div>
+      <ol class="ledger" data-reveal>
+        <li class="row row-stack" style="--i:0"><span class="fig">Fundamentals</span><p>Every session starts with footwork, ball handling, and shot mechanics, no matter the player&#x27;s age or level.</p></li>
+        <li class="row row-stack" style="--i:1"><span class="fig">Mindset</span><p>Robinson and Dweck train mindset the same way they train footwork, every rep and every drill.</p></li>
+        <li class="row row-stack" style="--i:2"><span class="fig">Personalized</span><p>Every plan starts with the player in front of us, in a one-on-one session, a small group or the full squad.</p></li>
+        <li class="row row-stack" style="--i:3"><span class="fig">Family</span><p>Robinson and Dweck know the families they train as well as the players.</p></li>
+      </ol>
     </div>
   </section>
 
 
-  <section class="section-tight" id="resources">
+  <section class="section" id="testimonials">
     <div class="wrap">
       <div class="section-head">
-        <h2>Free resource: a drill from a session</h2>
+        <h2>What Lace Up families say</h2>
       </div>
-      <div class="resource-block">
-        <video class="resource-video" muted loop playsinline controls poster="assets/resource-drill-poster.jpg" preload="none" width="1280" height="720">
-          <source src="assets/resource-drill.mp4" type="video/mp4">
-        </video>
-        <p class="resource-caption">A drill from a Lace Up session.</p>
-        <a class="text-link" href="#faq">Read the FAQ</a>
-      </div>
+      <figure class="pull">
+        <blockquote>Our daughter has excelled at Lace Up, each year improving physically and mentally. She now plays basketball at the collegiate level which Lace Up had a part in helping build the foundation for her success. We are grateful for all their help through the years.</blockquote>
+        <figcaption>Parent</figcaption>
+      </figure>
+      <ol class="ledger ledger-quotes" data-reveal>
+        <li class="row" style="--i:0"><span class="fig">Player</span><p>I&#x27;ve been training with Lace Up since 5th grade, and the impact the program has had on my basketball career has been incredible. They prepared me for the next level and gave me the skills and mindset needed to play college basketball. I would highly recommend the program to any player who is serious about improving their game.</p></li>
+        <li class="row" style="--i:1"><span class="fig">Player</span><p>Lace Up is such a great program and community with excellent coaches that have helped me tremendously with not only my basketball skills, but also my confidence as a player.</p></li>
+      </ol>
+      <a class="text-link after-ledger" href="/testimonials/">Read all reviews</a>
     </div>
   </section>
 
@@ -227,44 +193,41 @@
     </div>
     <div class="strip" role="region" tabindex="0" aria-label="Photos from Lace Up training sessions">
       <div class="strip-track">
-        <picture><source type="image/avif" srcset="/assets/strip/still-01-320.avif 320w, /assets/strip/still-01-480.avif 480w" sizes="(max-width: 759px) 200px, 340px"><source type="image/webp" srcset="/assets/strip/still-01-320.webp 320w, /assets/strip/still-01-480.webp 480w" sizes="(max-width: 759px) 200px, 340px"><img src="/assets/strip/still-01.jpg" alt="Player driving toward a trainer during a gym drill" width="480" height="600" loading="lazy" decoding="async"></picture>
-        <picture><source type="image/avif" srcset="/assets/strip/still-02-320.avif 320w, /assets/strip/still-02-480.avif 480w" sizes="(max-width: 759px) 200px, 340px"><source type="image/webp" srcset="/assets/strip/still-02-320.webp 320w, /assets/strip/still-02-480.webp 480w" sizes="(max-width: 759px) 200px, 340px"><img src="/assets/strip/still-02.jpg" alt="Trainer and players between reps at a training session" width="480" height="600" loading="lazy" decoding="async"></picture>
-        <picture><source type="image/avif" srcset="/assets/strip/still-03-320.avif 320w, /assets/strip/still-03-480.avif 480w" sizes="(max-width: 759px) 200px, 340px"><source type="image/webp" srcset="/assets/strip/still-03-320.webp 320w, /assets/strip/still-03-480.webp 480w" sizes="(max-width: 759px) 200px, 340px"><img src="/assets/strip/still-03.jpg" alt="Players dribbling downcourt during a session" width="480" height="600" loading="lazy" decoding="async"></picture>
-        <picture><source type="image/avif" srcset="/assets/strip/still-04-320.avif 320w, /assets/strip/still-04-480.avif 480w" sizes="(max-width: 759px) 200px, 340px"><source type="image/webp" srcset="/assets/strip/still-04-320.webp 320w, /assets/strip/still-04-480.webp 480w" sizes="(max-width: 759px) 200px, 340px"><img src="/assets/strip/still-04.jpg" alt="Players walking past the agility ladder between drills" width="480" height="600" loading="lazy" decoding="async"></picture>
-        <picture><source type="image/avif" srcset="/assets/strip/still-05-320.avif 320w, /assets/strip/still-05-480.avif 480w" sizes="(max-width: 759px) 200px, 340px"><source type="image/webp" srcset="/assets/strip/still-05-320.webp 320w, /assets/strip/still-05-480.webp 480w" sizes="(max-width: 759px) 200px, 340px"><img src="/assets/strip/still-05.jpg" alt="Two players working a passing and catching drill" width="480" height="600" loading="lazy" decoding="async"></picture>
-        <picture><source type="image/avif" srcset="/assets/strip/still-06-320.avif 320w, /assets/strip/still-06-480.avif 480w" sizes="(max-width: 759px) 200px, 340px"><source type="image/webp" srcset="/assets/strip/still-06-320.webp 320w, /assets/strip/still-06-480.webp 480w" sizes="(max-width: 759px) 200px, 340px"><img src="/assets/strip/still-06.jpg" alt="Group dribbling warmup on the court" width="480" height="600" loading="lazy" decoding="async"></picture>
-        <picture><source type="image/avif" srcset="/assets/strip/still-07-320.avif 320w, /assets/strip/still-07-480.avif 480w" sizes="(max-width: 759px) 200px, 340px"><source type="image/webp" srcset="/assets/strip/still-07-320.webp 320w, /assets/strip/still-07-480.webp 480w" sizes="(max-width: 759px) 200px, 340px"><img src="/assets/strip/still-07.jpg" alt="Two players dribbling side by side during a drill" width="480" height="600" loading="lazy" decoding="async"></picture>
-        <picture><source type="image/avif" srcset="/assets/strip/still-08-320.avif 320w, /assets/strip/still-08-480.avif 480w" sizes="(max-width: 759px) 200px, 340px"><source type="image/webp" srcset="/assets/strip/still-08-320.webp 320w, /assets/strip/still-08-480.webp 480w" sizes="(max-width: 759px) 200px, 340px"><img src="/assets/strip/still-08.jpg" alt="Trainer and players spaced out during a session" width="480" height="600" loading="lazy" decoding="async"></picture>
-        <picture><source type="image/avif" srcset="/assets/strip/still-09-320.avif 320w, /assets/strip/still-09-480.avif 480w" sizes="(max-width: 759px) 200px, 340px"><source type="image/webp" srcset="/assets/strip/still-09-320.webp 320w, /assets/strip/still-09-480.webp 480w" sizes="(max-width: 759px) 200px, 340px"><img src="/assets/strip/still-09.jpg" alt="Player sprinting during a conditioning drill" width="480" height="600" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/avif" srcset="/assets/strip/still-01-320.avif 320w, /assets/strip/still-01-480.avif 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><source type="image/webp" srcset="/assets/strip/still-01-320.webp 320w, /assets/strip/still-01-480.webp 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><img src="/assets/strip/still-01.jpg" alt="Player driving toward a trainer during a gym drill" width="480" height="600" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/avif" srcset="/assets/strip/still-02-320.avif 320w, /assets/strip/still-02-480.avif 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><source type="image/webp" srcset="/assets/strip/still-02-320.webp 320w, /assets/strip/still-02-480.webp 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><img src="/assets/strip/still-02.jpg" alt="Trainer and players between reps at a training session" width="480" height="600" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/avif" srcset="/assets/strip/still-03-320.avif 320w, /assets/strip/still-03-480.avif 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><source type="image/webp" srcset="/assets/strip/still-03-320.webp 320w, /assets/strip/still-03-480.webp 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><img src="/assets/strip/still-03.jpg" alt="Players dribbling downcourt during a session" width="480" height="600" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/avif" srcset="/assets/strip/still-04-320.avif 320w, /assets/strip/still-04-480.avif 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><source type="image/webp" srcset="/assets/strip/still-04-320.webp 320w, /assets/strip/still-04-480.webp 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><img src="/assets/strip/still-04.jpg" alt="Players walking past the agility ladder between drills" width="480" height="600" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/avif" srcset="/assets/strip/still-05-320.avif 320w, /assets/strip/still-05-480.avif 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><source type="image/webp" srcset="/assets/strip/still-05-320.webp 320w, /assets/strip/still-05-480.webp 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><img src="/assets/strip/still-05.jpg" alt="Two players working a passing and catching drill" width="480" height="600" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/avif" srcset="/assets/strip/still-06-320.avif 320w, /assets/strip/still-06-480.avif 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><source type="image/webp" srcset="/assets/strip/still-06-320.webp 320w, /assets/strip/still-06-480.webp 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><img src="/assets/strip/still-06.jpg" alt="Group dribbling warmup on the court" width="480" height="600" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/avif" srcset="/assets/strip/still-07-320.avif 320w, /assets/strip/still-07-480.avif 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><source type="image/webp" srcset="/assets/strip/still-07-320.webp 320w, /assets/strip/still-07-480.webp 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><img src="/assets/strip/still-07.jpg" alt="Two players dribbling side by side during a drill" width="480" height="600" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/avif" srcset="/assets/strip/still-08-320.avif 320w, /assets/strip/still-08-480.avif 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><source type="image/webp" srcset="/assets/strip/still-08-320.webp 320w, /assets/strip/still-08-480.webp 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><img src="/assets/strip/still-08.jpg" alt="Trainer and players spaced out during a session" width="480" height="600" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/avif" srcset="/assets/strip/still-09-320.avif 320w, /assets/strip/still-09-480.avif 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><source type="image/webp" srcset="/assets/strip/still-09-320.webp 320w, /assets/strip/still-09-480.webp 480w" sizes="(max-width: 759px) 220px, (max-width: 1100px) 24vw, 260px"><img src="/assets/strip/still-09.jpg" alt="Player sprinting during a conditioning drill" width="480" height="600" loading="lazy" decoding="async"></picture>
       </div>
     </div>
-    <div class="wrap"><a class="text-link" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">More on Instagram, @laceupsportsny</a></div>
+    <div class="wrap"><a class="text-link after-ledger" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">More on Instagram, @laceupsportsny</a></div>
   </section>
 
-  <section class="section" id="testimonials">
+  <section class="section-tight" id="faq">
     <div class="wrap">
       <div class="section-head">
-        <h2>What Lace Up families say</h2>
+        <h2>Questions</h2>
       </div>
-      <div class="testimonials">
-      <figure class="testimonial rise">
-        <blockquote>Our daughter has excelled at Lace Up, each year improving physically and mentally. She now plays basketball at the collegiate level which Lace Up had a part in helping build the foundation for her success. We are grateful for all their help through the years.</blockquote>
-        <figcaption>Parent</figcaption>
-      </figure>
-      <figure class="testimonial rise">
-        <blockquote>Lace Up Basketball is a great program for anyone looking to develop their game and become more serious about basketball. Coach Robinson and Coach Vaughn are amazing. My daughter has improved so much in the past year. The program is affordable and flexible giving you the option to go up to 4 days a week; you choose what works for your schedule. I highly recommend Lace Up Basketball!</blockquote>
-        <figcaption>Parent</figcaption>
-      </figure>
-      <figure class="testimonial rise">
-        <blockquote>I&#x27;ve been training with Lace Up since 5th grade, and the impact the program has had on my basketball career has been incredible. They prepared me for the next level and gave me the skills and mindset needed to play college basketball. I would highly recommend the program to any player who is serious about improving their game.</blockquote>
-        <figcaption>Player</figcaption>
-      </figure>
-      <figure class="testimonial rise">
-        <blockquote>Lace Up is such a great program and community with excellent coaches that have helped me tremendously with not only my basketball skills, but also my confidence as a player.</blockquote>
-        <figcaption>Player</figcaption>
-      </figure>
-      </div>
-      <a class="text-link" href="/testimonials/">Read all reviews</a>
+      <details>
+        <summary>Do I need to be at a certain athletic level to train with Lace Up?</summary>
+        <p>No. Lace Up works with players from beginner through varsity/AAU. Each plan starts from where the athlete is right now.</p>
+      </details>
+      <details>
+        <summary>What are your coaching credentials?</summary>
+        <p>James Robinson Jr. is a 3-time collegiate national champion as head coach with 30+ years of coaching experience. Vaughn Dweck has 35+ years of coaching experience, including a 2000 NYC PSAL city championship as head coach and 8 Bronx division championships. Full lists are in the About section.</p>
+      </details>
+      <details>
+        <summary>How do I book a session?</summary>
+        <p>Book a free discovery call, or DM us on Instagram. We&#x27;ll talk through goals and get you on the schedule.</p>
+      </details>
+      <details>
+        <summary>What does training cost?</summary>
+        <p>Ask on your discovery call. Sessions are set up per player, so we go over it with you directly.</p>
+      </details>
     </div>
   </section>
 
@@ -273,45 +236,8 @@
       <h2>Book a free discovery call</h2>
       <p class="band-sub">Pick a time online. A Lace Up coach calls you to talk through goals and get the player on the schedule.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="/contact/#book">Pick a time</a>
-        <a class="btn btn-ghost" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">DM us on Instagram</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-tight" id="faq">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Questions</h2>
-      </div>
-      <details class="rise">
-        <summary>Do I need to be at a certain athletic level to train with Lace Up?</summary>
-        <p>No. Lace Up works with players from beginner through varsity/AAU. Each plan starts from where the athlete is right now.</p>
-      </details>
-      <details class="rise">
-        <summary>What are your coaching credentials?</summary>
-        <p>James Robinson Jr. is a 3-time collegiate national champion as head coach with 30+ years of coaching experience. Vaughn Dweck has 35+ years of coaching experience, including a 2000 NYC PSAL city championship as head coach and 8 Bronx division championships. Full lists are in the About section.</p>
-      </details>
-      <details class="rise">
-        <summary>How do I book a session?</summary>
-        <p>Book a free discovery call, or DM us on Instagram. We&#x27;ll talk through goals and get you on the schedule.</p>
-      </details>
-      <details class="rise">
-        <summary>What does training cost?</summary>
-        <p>Ask on your discovery call. Sessions are set up per player, so we go over it with you directly.</p>
-      </details>
-    </div>
-  </section>
-
-  <section class="section-tight" id="contact">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Get in touch</h2>
-      </div>
-      <div class="contact-grid">
-        <a class="contact-item" href="mailto:Trulaceup@gmail.com"><span class="contact-label">Email</span>Trulaceup@gmail.com</a>
-        <a class="contact-item" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener"><span class="contact-label">Instagram</span>@laceupsportsny</a>
-        <div class="contact-item contact-item-static"><span class="contact-label">Serving</span>Cortlandt, Peekskill, Yorktown, Croton, Ossining and Mohegan Lake, NY</div>
+        <a class="btn btn-primary js-book" href="/contact/#book">Pick a time</a>
+        <a class="text-link" href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">DM us on Instagram</a>
       </div>
     </div>
   </section>
@@ -320,6 +246,7 @@
   <footer>
     <div class="wrap">
       <div class="foot-wordmark">LACE UP</div>
+      <nav class="foot-nav" aria-label="Pages"><a href="/programs/">Programs</a><a href="/about/">About</a><a href="/testimonials/">Testimonials</a><a href="/contact/">Contact</a></nav>
       <div>Serving Cortlandt, Peekskill, Yorktown, Croton, Ossining and Mohegan Lake, NY</div>
       <div class="foot-row">
         <a href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">@laceupsportsny</a>
@@ -329,55 +256,24 @@
   </footer>
 
   <nav class="sticky-bar" aria-label="Quick actions">
-    <a href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener"><span class="sticky-icon" aria-hidden="true">&#9993;</span>DM</a>
-    <a href="/contact/#book"><span class="sticky-icon" aria-hidden="true">&#9679;</span>Book a free call</a>
+    <a href="https://www.instagram.com/laceupsportsny" target="_blank" rel="noopener">DM</a>
+    <a class="js-book" href="/contact/#book">Book a free call</a>
   </nav>
 
-  <!-- Mobile nav: open/close + close-on-link-tap. Real <button> = keyboard-operable for free. -->
-  <script>
-    (function(){
-      var btn=document.getElementById('navBurger'), menu=document.getElementById('nav-menu');
-      function close(){ menu.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
-      btn.addEventListener('click', function(){
-        var open=menu.classList.toggle('open'); btn.setAttribute('aria-expanded', open);
-      });
-      menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
-      document.addEventListener('keydown', function(e){ if (e.key==='Escape' && menu.classList.contains('open')) { close(); btn.focus(); } });
-    })();
-  </script>
-  <!-- Sticky bar stays off-screen while the hero's own buttons are visible (no double "Book" on the first screen). No JS = bar always shown. -->
-  <script>
-    (function(){
-      var cta=document.querySelector('main .cta-row'); if(!cta||!window.IntersectionObserver) return;
-      new IntersectionObserver(function(en){ document.body.classList.toggle('cta-in-view', en[en.length-1].isIntersecting); }, { rootMargin:'-70px 0px 0px 0px' }).observe(cta);
-    })();
-  </script>
-  <!-- Background loops: landscape desktop only, after load, once the section is near the viewport. Phones, tablets in portrait and reduced-motion keep the still.
-       The observer watches the SECTION, not the hidden <video> (a display:none element never intersects). -->
-  <script>
-    (function(){
-      var mq = function(q){ return window.matchMedia && window.matchMedia(q).matches; };
-      var conn = navigator.connection || {};
-      var lite = mq('(prefers-reduced-motion: reduce)') || conn.saveData || /(^|-)2g$/.test(conn.effectiveType||'') || mq('(max-width: 700px)') || mq('(max-aspect-ratio: 4/5)');
-      if (lite || !window.IntersectionObserver) return;
-      function swap(video, poster){
-        video.hidden = false;
-        if (poster) poster.hidden = true;
-        video.play && video.play().catch(function(){ video.hidden = true; if (poster) poster.hidden = false; });
-      }
-      var sections = {top:['heroVideo','heroPoster'], programs:['programsVideo','programsPoster'], coaches:['coachesVideo','coachesPoster']};
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (!entry.isIntersecting) return;
-          io.unobserve(entry.target);
-          var pair = sections[entry.target.id];
-          var v = pair && document.getElementById(pair[0]);
-          if (v) swap(v, document.getElementById(pair[1]));
-        });
-      }, { rootMargin: '200px' });
-      function go(){ Object.keys(sections).forEach(function(id){ var s = document.getElementById(id); if (s) io.observe(s); }); }
-      if (document.readyState==='complete') go(); else window.addEventListener('load', go);
-    })();
-  </script>
+<script>(function(){var b=document.getElementById('navBurger'),m=document.getElementById('nav-menu');
+function c(){m.classList.remove('open');b.setAttribute('aria-expanded','false');}
+b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o);});
+m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',c);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open')){c();b.focus();}});})();</script>
+<script>(function(){var k=document.querySelector('main .cta-row'),B=document.body;if(!k||!window.IntersectionObserver){B.classList.add('cta-passed');return;}new IntersectionObserver(function(e){var x=e[e.length-1];B.classList.toggle('cta-passed',!x.isIntersecting&&x.boundingClientRect.top<70);},{rootMargin:'-70px 0px 0px 0px'}).observe(k);})();</script>
+<script>(function(){if(!window.IntersectionObserver)return;var L=document.querySelectorAll('.ledger[data-reveal]');if(!L.length)return;var o=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');o.unobserve(x.target);}});},{rootMargin:'0px 0px -10% 0px'});L.forEach(function(l){o.observe(l);});})();</script>
+<script>(function(){var el=document.querySelector('[data-count]');if(!el||!window.IntersectionObserver||!window.requestAnimationFrame||matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(el.getBoundingClientRect().top<innerHeight)return;var end=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'';var o=new IntersectionObserver(function(e){if(!e[0].isIntersecting)return;o.disconnect();var t0=null,d=1100;function f(t){if(t0===null)t0=t;var p=Math.min(1,(t-t0)/d);p=1-Math.pow(1-p,3);el.textContent=Math.round(end*p)+suf;if(p<1)requestAnimationFrame(f);}requestAnimationFrame(f);},{threshold:.6});o.observe(el);})();</script>
+<script>(function(){var A=document.querySelectorAll('.js-book');if(!A.length)return;var U='https://calendly.com/trulaceup/discovery?hide_gdpr_banner=1&background_color=0b0b0b&text_color=f5f5f6&primary_color=eb9006',P=null;
+function load(){if(P)return P;P=new Promise(function(ok,no){var l=document.createElement('link');l.rel='stylesheet';l.href='https://assets.calendly.com/assets/external/widget.css';document.head.appendChild(l);var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.async=true;s.onload=ok;s.onerror=no;document.head.appendChild(s);});return P;}
+function warm(){load().catch(function(){});}
+A.forEach(function(a){a.addEventListener('pointerenter',warm,{once:true});a.addEventListener('focus',warm,{once:true});a.addEventListener('touchstart',warm,{once:true,passive:true});
+a.addEventListener('click',function(e){if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;e.preventDefault();var h=a.getAttribute('href'),done=false;var t=setTimeout(function(){if(!done){done=true;location.href=h;}},2500);
+load().then(function(){if(done||!window.Calendly)return;done=true;clearTimeout(t);window.Calendly.initPopupWidget({url:U});}).catch(function(){if(!done){done=true;clearTimeout(t);location.href=h;}});});});})();</script>
+
 </body>
 </html>
