@@ -3,7 +3,7 @@
     {
       "name": "1:1 Private Training",
       "tag": "Individual",
-      "blurb": "One-on-one sessions focused on your game and your pace, with a coach watching every rep."
+      "blurb": "One-on-one sessions focused on your game and your pace, with a trainer watching every rep."
     },
     {
       "name": "Small Group Training",
@@ -30,7 +30,7 @@
     },
     {
       "q": "What are your coaching credentials?",
-      "a": "Coach Robinson (James Robinson Jr.) is a 3-time collegiate national champion as head coach with 30+ years of coaching experience. Coach Vaughn Dweck has 35+ years of coaching experience, including a 2000 NYC PSAL city championship as head coach and 8 Bronx division championships. Full lists are in the About section."
+      "a": "James Robinson Jr. is a 3-time collegiate national champion as head coach with 30+ years of coaching experience. Vaughn Dweck has 35+ years of coaching experience, including a 2000 NYC PSAL city championship as head coach and 8 Bronx division championships. Full lists are in the About section."
     },
     {
       "q": "How do I book a session?",
@@ -49,7 +49,7 @@
   },
   "coaches": [
     {
-      "name": "Coach Robinson Jr.",
+      "name": "James Robinson Jr.",
       "credentials": [
         "3-time collegiate national champion as head coach",
         "10 national tournament appearances as head Coach and assistant coach",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "name": "Coach Vaughn Dweck",
+      "name": "Vaughn Dweck",
       "credentials": [
         "2000 NYC high school PSAL city Champion as head Coach",
         "1995 NYC high school PSAL city champion runner up as head Coach",
@@ -75,7 +75,7 @@
   "about": {
     "org": "Lace Up sports is a holistic basketball development, training, and sports navigation organization. We enable student athletes to reach their personal and athletic goals. Our nurturing environment coupled with using \"growth mindset\" techniques has helped many of our student athletes reach the pinnacle of the sports world and beyond. Our staff is committed to pushing each player to the next level. We present an intense and detailed approach to training and playing the game.",
     "mission": "Our mission is to create young people who approach every obstacle as an opportunity. Our goal is to successfully develop each student athletes' confidence, creativity, leadership, teamwork, and sportsmanship.",
-    "offer": "Lace Up provides highly seasoned and respected coaches so our student athletes can compete at the highest level. Family and quality instruction are the cornerstones of Lace Up. Our coaches are dedicated to developing relationships with our student athletes and their families."
+    "offer": "Lace Up provides highly seasoned and respected trainers so our student athletes can compete at the highest level. Family and quality instruction are the cornerstones of Lace Up. Our coaches are dedicated to developing relationships with our student athletes and their families."
   },
   "pillars": [
     {
@@ -84,7 +84,7 @@
     },
     {
       "label": "Mindset",
-      "body": "Coach Robinson and Coach Dweck coach mindset the same way they coach footwork, every rep and every drill."
+      "body": "Robinson and Dweck train mindset the same way they train footwork, every rep and every drill."
     },
     {
       "label": "Personalized",
@@ -92,7 +92,7 @@
     },
     {
       "label": "Family",
-      "body": "Coach Robinson and Coach Dweck know the families they train as well as the players."
+      "body": "Robinson and Dweck know the families they train as well as the players."
     }
   ],
   "resource": {
@@ -102,7 +102,7 @@
   },
   "seo": {
     "title": "Lace Up Sports | Basketball Training in Cortlandt, Peekskill & Westchester",
-    "description": "Basketball training for Westchester players, led by a 3x collegiate national champion coach. Individual, small-group and team training for families in Cortlandt, Peekskill, Yorktown, Croton, Ossining and Mohegan Lake. Book a free discovery call.",
+    "description": "Basketball training for Westchester players, led by a 3x collegiate national champion. Individual, small-group and team training for families in Cortlandt, Peekskill, Yorktown, Croton, Ossining and Mohegan Lake. Book a free discovery call.",
     "canonical": "https://www.trulaceup.com/",
     "og_image_host": "https://www.trulaceup.com/",
     "robots": "index, follow",
