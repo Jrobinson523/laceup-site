@@ -1,1 +1,5 @@
 .DS_Store
+# impeccable artifacts live in ../impeccable (deploy whitelist); never track
+PRODUCT.md
+DESIGN.md
+.impeccable/

@@ -121,19 +121,11 @@ def pic(src, alt, w, h, widths, sizes, cls="", lazy=True, extra=""):
 
 
 def render_photostrip(stills):
+    """One set of tiles: a swipeable row on phones, a 3-up grid on wide screens (no marquee)."""
     tiles = []
     for s in stills:
-        tiles.append("        " + pic(s["image"], s["alt"], 480, 600, [320, 480], "160px"))
-    # duplicate the set once so the CSS marquee can loop seamlessly
-    tiles_doubled = tiles + tiles
-    return "\n".join(tiles_doubled)
-
-
-def render_photostrip_grid(stills):
-    blocks = []
-    for s in stills:
-        blocks.append("        " + pic(s["image"], s["alt"], 480, 600, [320, 480], "(max-width: 700px) 33vw, 340px"))
-    return "\n".join(blocks)
+        tiles.append("        " + pic(s["image"], s["alt"], 480, 600, [320, 480], "(max-width: 759px) 200px, 340px"))
+    return "\n".join(tiles)
 
 
 # ---- sub-page generator (about/programs/testimonials/contact, schema, sitemap) ----
@@ -153,17 +145,23 @@ def schema(data):
         "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": p["name"]}} for p in data["programs"]],
     }, separators=(",", ":")) + '\n</script>')
 
-NAV = '''<header class="topnav"><div class="wrap topnav-inner">
+def nav(path):
+    links = [("/", "Home"), ("/programs/", "Programs"), ("/about/", "About"), ("/testimonials/", "Testimonials"), ("/contact/", "Contact")]
+    cur = ' aria-current="page"'
+    items = "".join(f'<a href="{h}"{cur if h == path else ""}>{l}</a>' for h, l in links)
+    return ('''<header class="topnav"><div class="wrap topnav-inner">
 <a href="/" class="wordmark">LACE UP</a>
 <button type="button" class="nav-burger" id="navBurger" aria-label="Menu" aria-controls="nav-menu" aria-expanded="false"><span></span><span></span><span></span></button>
 <nav id="nav-menu" class="nav-menu" aria-label="Primary">
-<a href="/">Home</a><a href="/programs/">Programs</a><a href="/about/">About</a><a href="/testimonials/">Testimonials</a><a href="/contact/">Contact</a>
-<a class="nav-book" href="/contact/#book">Book a Free Call</a></nav></div></header>'''
+''' + items + '''
+<a class="nav-book" href="/contact/#book">Book a Free Call</a></nav></div></header>''')
 
 SCRIPT = '''<script>(function(){var b=document.getElementById('navBurger'),m=document.getElementById('nav-menu');
 function c(){m.classList.remove('open');b.setAttribute('aria-expanded','false');}
 b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o);});
-m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',c);});})();</script>
+m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',c);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open')){c();b.focus();}});})();</script>
+<script>(function(){var k=document.querySelector('main .cta-row');if(!k||!window.IntersectionObserver)return;new IntersectionObserver(function(e){document.body.classList.toggle('cta-in-view',e[e.length-1].isIntersecting);},{rootMargin:'-70px 0px 0px 0px'}).observe(k);})();</script>
 %s'''
 
 CAL = '''<script>(function(){var k=document.getElementById('book');function l(){var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.async=true;document.body.appendChild(s);}
@@ -187,7 +185,7 @@ def shell(data, path, title, desc, h1, lede, body, extra_js=""):
 <link rel="stylesheet" href="/styles.css?v={CSS_V}">
 {schema(data)}
 </head><body>
-{NAV}
+{nav(path)}
 <main>
 <section class="page-head"><div class="wrap">
 <h1>{h1}</h1><p class="page-lede">{lede}</p>
@@ -198,7 +196,7 @@ def shell(data, path, title, desc, h1, lede, body, extra_js=""):
 </main>
 <footer><div class="wrap"><div class="foot-wordmark">LACE UP</div>
 <div>Serving {", ".join(data["towns"][:-1])} and {data["towns"][-1]}, NY</div>
-<div class="foot-row"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener">{esc(c["instagram_handle"])}</a> &middot; <a href="mailto:{esc(c["email"])}">{esc(c["email"])}</a></div></div></footer>
+<div class="foot-row"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener">{esc(c["instagram_handle"])}</a><a href="mailto:{esc(c["email"])}">{esc(c["email"])}</a></div></div></footer>
 <nav class="sticky-bar" aria-label="Quick actions"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener"><span class="sticky-icon" aria-hidden="true">&#9993;</span>DM</a><a href="{'#book' if path=='/contact/' else '/contact/#book'}"><span class="sticky-icon" aria-hidden="true">&#9679;</span>Book a free call</a></nav>
 {SCRIPT % extra_js}
 </body></html>
@@ -229,12 +227,12 @@ def build(root, data, testimonials):
         "Basketball Programs: 1:1, Small Group, Team | Lace Up Sports Westchester",
         f"Individual, small-group (2-5 players), team and clinic basketball training for players in {towns_s}. Start with a free discovery call.",
         "Basketball training programs", f"Four ways to train with Lace Up, for players from beginner through varsity and AAU in {towns_s}.",
-        f'''<section class="section-tight"><div class="wrap"><div class="section-head"><p class="eyebrow">Formats</p><h2>Pick your format</h2><span class="season-tag">{esc(data["season_tag"])}</span></div>
+        f'''<section class="section-tight"><div class="wrap"><div class="section-head"><h2>Pick your format</h2><span class="season-tag">{esc(data["season_tag"])}</span></div>
 <div class="cards">{cards}</div><p class="cards-note">{esc(data["programs_note"])}</p></div></section>
-<section class="section-tight"><div class="wrap"><div class="section-head"><p class="eyebrow">Booking</p><h2>How it works</h2></div>{steps}
+<section class="section-tight"><div class="wrap"><div class="section-head"><h2>How booking works</h2></div>{steps}
 <p class="fine">Families can train more than once a week, up to four days, and choose what fits their schedule.</p></div></section>
-<section class="section-tight"><div class="wrap"><div class="section-head"><p class="eyebrow">FAQ</p><h2>Questions</h2></div>{faq}</div></section>
-<section class="section book-band"><div class="wrap"><p class="eyebrow">Next step</p><h2>Book a free discovery call</h2><p class="band-sub">Pick a time online. A Lace Up coach calls you to talk through goals and get the player on the schedule.</p><div class="cta-row"><a class="btn btn-primary" href="/contact/#book">Pick a time</a></div></div></section>''')
+<section class="section-tight"><div class="wrap"><div class="section-head"><h2>Questions</h2></div>{faq}</div></section>
+<section class="section book-band"><div class="wrap"><h2>Book a free discovery call</h2><p class="band-sub">Pick a time online. A Lace Up coach calls you to talk through goals and get the player on the schedule.</p><div class="cta-row"><a class="btn btn-primary" href="/contact/#book">Pick a time</a></div></div></section>''')
 
     # ---- Testimonials: verbatim only
     tcards = "\n".join(f'<figure class="testimonial"><blockquote>{esc(t["quote"])}</blockquote><figcaption>{esc(t["voice"])}</figcaption></figure>' for t in testimonials)
@@ -243,18 +241,18 @@ def build(root, data, testimonials):
         "What parents and players say about Lace Up basketball training in Westchester, in their own words.",
         "What Lace Up families say", "Reviews from parents and players, word for word.",
         f'<section class="section-tight"><div class="wrap"><div class="testimonials">{tcards}</div></div></section>'
-        '<section class="section book-band"><div class="wrap"><p class="eyebrow">Next step</p><h2>Book a free discovery call</h2><p class="band-sub">Pick a time online. A Lace Up coach calls you to talk through goals and get the player on the schedule.</p><div class="cta-row"><a class="btn btn-primary" href="/contact/#book">Pick a time</a></div></div></section>')
+        '<section class="section book-band"><div class="wrap"><h2>Book a free discovery call</h2><p class="band-sub">Pick a time online. A Lace Up coach calls you to talk through goals and get the player on the schedule.</p><div class="cta-row"><a class="btn btn-primary" href="/contact/#book">Pick a time</a></div></div></section>')
 
     # ---- About: live copy, typos already fixed in data
-    coaches = "\n".join('<div class="coach"><h3>%s</h3><ul class="coach-credentials">%s</ul></div>' % (esc(k["name"]), "".join(f"<li>{esc(x)}</li>" for x in k["credentials"])) for k in data["coaches"])
+    coaches = "\n".join('<div class="coach"><h2>%s</h2><ul class="coach-credentials">%s</ul></div>' % (esc(k["name"]), "".join(f"<li>{esc(x)}</li>" for x in k["credentials"])) for k in data["coaches"])
     a = data["about"]
     pages["about/index.html"] = shell(data, "/about/",
         "About Lace Up Sports | Coaches Robinson & Dweck, Westchester Basketball",
         "Meet the Lace Up coaches: a 3x collegiate national champion head coach and a NYC PSAL city champion head coach, 65+ years of combined coaching.",
         "About Lace Up", "Two coaches. 65+ years of combined coaching experience.",
-        f'''<section class="section-tight"><div class="wrap"><div class="about-copy"><h3>Our Organization</h3><p>{esc(a["org"])}</p><h3>Our Mission</h3><p>{esc(a["mission"])}</p><h3>Our Offer</h3><p>{esc(a["offer"])}</p></div>
+        f'''<section class="section-tight"><div class="wrap"><div class="about-copy"><h2>Our Organization</h2><p>{esc(a["org"])}</p><h2>Our Mission</h2><p>{esc(a["mission"])}</p><h2>Our Offer</h2><p>{esc(a["offer"])}</p></div>
 <div class="coaches-wrap"><div class="bg-video-content">{coaches}</div></div></div></section>
-<section class="section book-band"><div class="wrap"><p class="eyebrow">Next step</p><h2>Book a free discovery call</h2><p class="band-sub">Pick a time online. A Lace Up coach calls you to talk through goals and get the player on the schedule.</p><div class="cta-row"><a class="btn btn-primary" href="/contact/#book">Pick a time</a></div></div></section>''')
+<section class="section book-band"><div class="wrap"><h2>Book a free discovery call</h2><p class="band-sub">Pick a time online. A Lace Up coach calls you to talk through goals and get the player on the schedule.</p><div class="cta-row"><a class="btn btn-primary" href="/contact/#book">Pick a time</a></div></div></section>''')
 
     # ---- Contact / booking
     pages["contact/index.html"] = shell(data, "/contact/",
@@ -327,7 +325,6 @@ def main():
         "{{PILLARS}}": render_pillars(data["pillars"]),
         "{{PLACEMENTS_SECTION}}": render_placements_section(placements_data["placements"]),
         "{{PHOTOSTRIP_TRACK}}": render_photostrip(photostrip_data["stills"]),
-        "{{PHOTOSTRIP_GRID}}": render_photostrip_grid(photostrip_data["stills"]),
         "{{RESOURCE_VIDEO}}": esc(resource["video"]),
         "{{RESOURCE_POSTER}}": esc(resource["poster"]),
         "{{RESOURCE_CAPTION}}": esc(resource["caption"]),
