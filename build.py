@@ -62,19 +62,26 @@ def render_proof(cls=""):
     alt = "Coach Robinson with a Lace Up player holding her 1,000-point banner"
     return ('      <figure class="proof">\n        '
             + pic("assets/proof-1000pt.jpg", alt, 1080, 1350, [540, 1080], "(max-width: 700px) 100vw, 420px")
-            + "\n        <figcaption>Kaitlyn\u2019s 1,000-point night, with Coach Robinson.</figcaption>\n      </figure>")
+            + "\n        <figcaption>Kaitlyn Raguso\u2019s 1,000-point night, with Coach Robinson.</figcaption>\n      </figure>")
+
+
+CARDS = {
+    "Elyse": ("assets/card-elyse.jpg", "A message from Elyse, a Lace Up player: \u201cThey prepared me for the next level and gave me the skills and mindset needed to play college basketball.\u201d", 1080, 880),
+    "Kate Stratton": ("assets/card-kate.jpg", "A message from Kate Stratton, a Lace Up player, about going to Lace Up from elementary school through college", 1080, 1350),
+}
 
 
 def render_card(name):
+    src, alt, w, h = CARDS[name]
     return ('      <figure class="proof proof-card">\n        '
-            + pic("assets/card-elyse.jpg", "A message from Elyse, a Lace Up player: \u201cThey prepared me for the next level and gave me the skills and mindset needed to play college basketball.\u201d", 1080, 880, [540, 1080], "(max-width: 700px) 100vw, 420px")
+            + pic(src, alt, w, h, [540, 1080], "(max-width: 700px) 100vw, 420px")
             + f"\n        <figcaption>{name}, Lace Up player.</figcaption>\n      </figure>")
 
 
 def render_pull_quote(t):
     return ('      <figure class="pull">\n'
             f'        <blockquote>{esc(t["quote"])}</blockquote>\n'
-            f'        <figcaption>{esc(t["voice"])}</figcaption>\n'
+            f'        <figcaption>{esc(t["name"])}</figcaption>\n'
             '      </figure>')
 
 
@@ -83,7 +90,7 @@ def render_testimonial_rows(testimonials, only=None):
     if only is not None:
         testimonials = [testimonials[i] for i in only]
     for i, t in enumerate(testimonials):
-        rows.append(f'        <li class="row" style="--i:{i}"><span class="fig">{esc(t["voice"])}</span><p>{esc(t["quote"])}</p></li>')
+        rows.append(f'        <li class="row" style="--i:{i}"><span class="fig">{esc(t["name"])}</span><p>{esc(t["quote"])}</p></li>')
     return "\n".join(rows)
 
 
@@ -286,7 +293,7 @@ def build(root, data, testimonials):
     # ---- Testimonials: verbatim only
     tcards = ('<div class="pair">' + render_proof() + render_pull_quote(testimonials[1]) + '</div>\n<ol class="ledger ledger-quotes" data-reveal>\n'
               + render_testimonial_rows(testimonials, only=[4]) + '\n</ol>\n<div class="pair pair-card">' + render_card("Elyse") + '</div>\n<ol class="ledger ledger-quotes" data-reveal>\n'
-              + render_testimonial_rows(testimonials, only=[2, 3, 0, 5]) + '\n</ol>')
+              + render_testimonial_rows(testimonials, only=[2, 3, 0, 5]) + '\n</ol>\n<div class="pair pair-card">' + render_card("Kate Stratton") + '</div>')
     pages["testimonials/index.html"] = shell(data, "/testimonials/",
         "Parent & Player Reviews | Lace Up Sports Basketball Training",
         "What parents and players say about Lace Up basketball training in Westchester, in their own words.",
