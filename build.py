@@ -249,7 +249,7 @@ def shell(data, path, title, desc, h1, lede, body, extra_js=""):
 <footer><div class="wrap"><div class="foot-wordmark">LACE UP</div>
 <nav class="foot-nav" aria-label="Pages"><a href="/programs/">Programs</a><a href="/about/">About</a><a href="/testimonials/">Testimonials</a><a href="/contact/">Contact</a></nav>
 <div>Serving {", ".join(data["towns"][:-1])} and {data["towns"][-1]}, NY</div>
-<div class="foot-row"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener">{esc(c["instagram_handle"])}</a><a href="mailto:{esc(c["email"])}">{esc(c["email"])}</a></div></div></footer>
+<div class="foot-row"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener">{esc(c["instagram_handle"])}</a><a href="mailto:{esc(c["email"])}">{esc(c["email"])}</a><a href="{esc(c["donate_url"])}" target="_blank" rel="noopener">Donate</a></div></div></footer>
 <nav class="sticky-bar" aria-label="Quick actions"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener">DM</a><a class="{jb.strip()}" href="{book}">Book a free call</a></nav>
 {scripts(data, extra_js)}
 </body></html>
@@ -324,7 +324,8 @@ def build(root, data, testimonials):
 <section class="section-tight"><div class="wrap"><ol class="ledger ledger-contact" data-reveal>
 <li class="row row-stack" style="--i:0"><span class="fig">Email</span><a href="mailto:{esc(c["email"])}">{esc(c["email"])}</a></li>
 <li class="row row-stack" style="--i:1"><span class="fig">Instagram</span><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener">{esc(c["instagram_handle"])}</a></li>
-<li class="row row-stack" style="--i:2"><span class="fig">Serving</span><p class="txt-ink">{towns_s}</p></li></ol></div></section>''', CAL)
+<li class="row row-stack" style="--i:2"><span class="fig">Serving</span><p class="txt-ink">{towns_s}</p></li></ol></div></section>
+<section class="section book-band" id="donate"><div class="wrap"><h2>Support Lace Up</h2><p class="band-sub">Help more young players get great coaching. Donations go to Lace Up Sports LLC through PayPal.</p><div class="cta-row"><a class="btn btn-primary" href="{esc(c["donate_url"])}" target="_blank" rel="noopener">Donate with PayPal</a></div></div></section>''', CAL)
 
     # faq/ keeps a redirect (existing stub) -> programs
     for rel, body in pages.items():
