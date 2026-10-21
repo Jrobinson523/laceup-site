@@ -58,6 +58,19 @@ def render_coach_blocks(coaches, tag="h3"):
     return "\n".join(blocks)
 
 
+def render_proof(cls=""):
+    alt = "Coach Robinson with a Lace Up player holding her 1,000-point banner"
+    return ('      <figure class="proof">\n        '
+            + pic("assets/proof-1000pt.jpg", alt, 1080, 1350, [540, 1080], "(max-width: 700px) 100vw, 420px")
+            + "\n        <figcaption>Kaitlyn\u2019s 1,000-point night, with Coach Robinson.</figcaption>\n      </figure>")
+
+
+def render_card(name):
+    return ('      <figure class="proof proof-card">\n        '
+            + pic("assets/card-elyse.jpg", "A message from Elyse, a Lace Up player: \u201cThey prepared me for the next level and gave me the skills and mindset needed to play college basketball.\u201d", 1080, 880, [540, 1080], "(max-width: 700px) 100vw, 420px")
+            + f"\n        <figcaption>{name}, Lace Up player.</figcaption>\n      </figure>")
+
+
 def render_pull_quote(t):
     return ('      <figure class="pull">\n'
             f'        <blockquote>{esc(t["quote"])}</blockquote>\n'
@@ -271,7 +284,9 @@ def build(root, data, testimonials):
 <section class="section book-band"><div class="wrap"><h2>Book a free discovery call</h2><p class="band-sub">Pick a time online. A Lace Up coach calls you to talk through goals and get the player on the schedule.</p><div class="cta-row"><a class="btn btn-primary js-book" href="/contact/#book">Pick a time</a></div></div></section>''')
 
     # ---- Testimonials: verbatim only
-    tcards = render_pull_quote(testimonials[1]) + '\n<ol class="ledger ledger-quotes" data-reveal>\n' + render_testimonial_rows(testimonials, only=[4, 2, 3, 0, 5]) + '\n</ol>'
+    tcards = ('<div class="pair">' + render_proof() + render_pull_quote(testimonials[1]) + '</div>\n<ol class="ledger ledger-quotes" data-reveal>\n'
+              + render_testimonial_rows(testimonials, only=[4]) + '\n</ol>\n<div class="pair pair-card">' + render_card("Elyse") + '</div>\n<ol class="ledger ledger-quotes" data-reveal>\n'
+              + render_testimonial_rows(testimonials, only=[2, 3, 0, 5]) + '\n</ol>')
     pages["testimonials/index.html"] = shell(data, "/testimonials/",
         "Parent & Player Reviews | Lace Up Sports Basketball Training",
         "What parents and players say about Lace Up basketball training in Westchester, in their own words.",
@@ -355,7 +370,7 @@ def main():
         "{{PROGRAM_ROWS}}": render_program_rows(data["programs"]),
         "{{COACH_BLOCKS}}": render_coach_blocks(data["coaches"]),
         "{{FAQ_ITEMS}}": render_faq(data["faq"]),
-        "{{PULL_QUOTE}}": render_pull_quote(testimonials_data["testimonials"][1]),
+        "{{PULL_QUOTE}}": render_proof() + "\n" + render_pull_quote(testimonials_data["testimonials"][1]),
         "{{TESTIMONIAL_ROWS}}": render_testimonial_rows(testimonials_data["testimonials"], only=[4, 3]),
         "{{SCRIPTS}}": scripts(data),
         "{{TOWNS}}": esc(", ".join(data["towns"][:-1]) + " and " + data["towns"][-1]),

@@ -263,6 +263,12 @@ html.js .ledger[data-reveal].in .row::after{transform:scaleX(1);}
 .pull blockquote::before{content:"\201C"; color:var(--orange);}
 .pull blockquote::after{content:"\201D"; color:var(--orange);}
 .pull figcaption{margin-top:4px; font-family:var(--display); font-size:clamp(18px,2vw,24px); font-weight:700; color:var(--orange); line-height:1.15;}
+.proof{margin:0 0 var(--s-3); max-width:420px;}
+.proof img{display:block; width:100%; height:auto; border:1px solid var(--line);}
+.proof figcaption{margin-top:10px; font-family:var(--text); font-size:15px; line-height:1.45; color:var(--muted); max-width:44ch;}
+.pair .pull{border-top:0; padding-top:0;}
+@media (min-width:701px){ .pair{display:grid; grid-template-columns:minmax(0,420px) 1fr; gap:48px; align-items:center; padding:26px 0 30px; border-top:1px solid var(--line);} .pair .proof{margin:0;} .pair .pull{grid-template-columns:1fr; padding:0;} .pair .pull figcaption{order:0; padding-top:0;} .pair-card .proof{max-width:420px;} }
+@media (max-width:700px){ .pair{padding-top:26px; border-top:1px solid var(--line);} .pair-card{padding:18px 0;} }
 .ledger-quotes .row > p{font-size:17px; color:var(--ink); max-width:56ch;}
 .ledger-quotes .fig{color:var(--orange);}
 
