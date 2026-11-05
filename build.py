@@ -61,7 +61,7 @@ def render_coach_blocks(coaches, tag="h3"):
 def render_proof(cls=""):
     alt = "Coach Robinson with a Lace Up player holding her 1,000-point banner"
     return ('      <figure class="proof">\n        '
-            + pic("assets/proof-1000pt.jpg", alt, 1080, 1350, [540, 1080], "(max-width: 700px) 100vw, 420px")
+            + pic("assets/proof-cropped.jpg", alt, 1080, 1222, [540, 1080], "(max-width: 700px) 100vw, 420px")
             + "\n        <figcaption>Kaitlyn Raguso\u2019s 1,000-point night, with Coach Robinson.</figcaption>\n      </figure>")
 
 
