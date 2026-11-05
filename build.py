@@ -173,7 +173,7 @@ def schema(data):
     }, separators=(",", ":")) + '\n</script>')
 
 def nav(path):
-    links = [("/", "Home"), ("/programs/", "Programs"), ("/about/", "About"), ("/testimonials/", "Testimonials"), ("/contact/", "Contact")]
+    links = [("/", "Home"), ("/programs/", "Programs"), ("/about/philosophy/", "Philosophy"), ("/about/", "About"), ("/testimonials/", "Testimonials"), ("/contact/", "Contact")]
     cur = ' aria-current="page"'
     items = "".join(f'<a href="{h}"{cur if h == path else ""}>{l}</a>' for h, l in links)
     book = "#book" if path == "/contact/" else "/contact/#book"
@@ -247,7 +247,7 @@ def shell(data, path, title, desc, h1, lede, body, extra_js=""):
 {body}
 </main>
 <footer><div class="wrap"><div class="foot-wordmark">LACE UP</div>
-<nav class="foot-nav" aria-label="Pages"><a href="/programs/">Programs</a><a href="/about/">About</a><a href="/testimonials/">Testimonials</a><a href="/contact/">Contact</a></nav>
+<nav class="foot-nav" aria-label="Pages"><a href="/programs/">Programs</a><a href="/about/philosophy/">Philosophy</a><a href="/about/">About</a><a href="/testimonials/">Testimonials</a><a href="/contact/">Contact</a></nav>
 <div>Serving {", ".join(data["towns"][:-1])} and {data["towns"][-1]}, NY</div>
 <div class="foot-row"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener">{esc(c["instagram_handle"])}</a><a href="mailto:{esc(c["email"])}">{esc(c["email"])}</a><a href="{esc(c["donate_url"])}" target="_blank" rel="noopener">Donate</a></div></div></footer>
 <nav class="sticky-bar" aria-label="Quick actions"><a href="{esc(c["instagram_url"])}" target="_blank" rel="noopener">DM</a><a class="{jb.strip()}" href="{book}">Book a free call</a></nav>
@@ -332,7 +332,7 @@ def build(root, data, testimonials):
         os.makedirs(os.path.join(root, os.path.dirname(rel)), exist_ok=True)
         open(os.path.join(root, rel), "w", encoding="utf-8").write(body)
     # sitemap
-    urls = ["/"] + ["/" + r.rsplit("index.html", 1)[0] for r in pages]
+    urls = ["/", "/about/philosophy/"] + ["/" + r.rsplit("index.html", 1)[0] for r in pages]
     open(os.path.join(root, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>https://www.trulaceup.com{u}</loc><lastmod>{data['seo']['lastmod']}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     print("pages:", ", ".join(pages))
 
@@ -392,10 +392,7 @@ def main():
     for k, v in replacements.items():
         out = out.replace(k, v)
 
-    with open(out_path, "w", encoding="utf-8") as f:
-        f.write(out)
-
-    print(f"Built {out_path} ({len(out)} bytes)")
+    # index.html and about/philosophy/ are hand-authored since the 2026-11 redesign; template.html no longer writes the home page.
     build(ROOT, data, testimonials_data["testimonials"])
 
 
